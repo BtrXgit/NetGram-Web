@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>NetGram — ISP Admin CRM App</title>
+<title>NetGram — CRM App</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet" />
 <style>
   :root {
@@ -283,6 +283,131 @@
   .reveal.on { opacity: 1; transform: translateY(0); }
   .d1{transition-delay:.1s} .d2{transition-delay:.2s} .d3{transition-delay:.3s}
 
+  /* ===================== DOWNLOAD OVERLAY ===================== */
+  #dl-overlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(15,23,42,0.55);
+    backdrop-filter: blur(6px);
+    align-items: center; justify-content: center;
+  }
+  #dl-overlay.show { display: flex; animation: fadeIn .25s ease; }
+  @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+  .dl-card {
+    background: white; border-radius: 24px; padding: 44px 40px;
+    text-align: center; max-width: 320px; width: 90%;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.18);
+    animation: slideUp .3s ease;
+  }
+  @keyframes slideUp { from{transform:translateY(20px);opacity:0} to{transform:translateY(0);opacity:1} }
+
+  .dl-spinner-wrap {
+    position: relative; width: 80px; height: 80px; margin: 0 auto 22px;
+  }
+  .dl-spinner {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    border: 5px solid #e2e8f0;
+    border-top-color: var(--blue);
+    animation: spin 0.9s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .dl-spinner-icon {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+  }
+
+  .dl-title {
+    font-family: var(--font-display); font-size: 20px; font-weight: 700;
+    color: var(--text); margin-bottom: 8px;
+  }
+  .dl-sub {
+    font-size: 13.5px; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;
+  }
+  .dl-progress-bar {
+    height: 5px; background: #e2e8f0; border-radius: 100px; overflow: hidden; margin-bottom: 10px;
+  }
+  .dl-progress-fill {
+    height: 100%; background: linear-gradient(90deg, var(--blue), var(--cyan));
+    border-radius: 100px; width: 0%;
+    transition: width 0.2s ease;
+  }
+  .dl-percent {
+    font-size: 12px; color: var(--text-muted); font-weight: 600;
+  }
+
+  /* ===================== CONTACT POPUP ===================== */
+  #contact-overlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(15,23,42,0.55);
+    backdrop-filter: blur(6px);
+    align-items: center; justify-content: center;
+  }
+  #contact-overlay.show { display: flex; animation: fadeIn .25s ease; }
+
+  .contact-card {
+    background: white; border-radius: 24px; padding: 36px 36px 32px;
+    max-width: 420px; width: 92%;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.18);
+    animation: slideUp .3s ease;
+    position: relative;
+  }
+  .contact-close {
+    position: absolute; top: 16px; right: 18px;
+    width: 32px; height: 32px; background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 16px; color: var(--text-muted);
+    transition: all .2s;
+  }
+  .contact-close:hover { background: var(--red-pale); color: var(--red); border-color: #fecaca; }
+
+  .contact-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--blue-pale); border: 1px solid #bfdbfe;
+    border-radius: 100px; padding: 4px 13px;
+    font-size: 11px; font-weight: 700; color: var(--blue);
+    margin-bottom: 14px; letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+  .contact-title {
+    font-family: var(--font-display); font-size: 24px; font-weight: 700;
+    color: var(--text); margin-bottom: 6px; letter-spacing: -0.3px;
+  }
+  .contact-desc {
+    font-size: 13.5px; color: var(--text-muted); line-height: 1.65; margin-bottom: 26px;
+  }
+
+  .contact-item {
+    display: flex; align-items: center; gap: 14px;
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 13px; padding: 14px 16px; margin-bottom: 10px;
+    transition: all .2s; cursor: default;
+  }
+  .contact-item:hover { border-color: #bfdbfe; background: var(--blue-pale); }
+  .contact-ico {
+    width: 40px; height: 40px; border-radius: 11px;
+    display: flex; align-items: center; justify-content: center; font-size: 18px;
+    flex-shrink: 0;
+  }
+  .contact-label {
+    font-size: 11px; font-weight: 600; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 2px;
+  }
+  .contact-value {
+    font-size: 14px; font-weight: 600; color: var(--text);
+  }
+
+  .contact-divider {
+    border: none; border-top: 1px solid var(--border); margin: 18px 0;
+  }
+  .contact-plan-note {
+    font-size: 12.5px; color: var(--text-muted); text-align: center; line-height: 1.6;
+  }
+  .contact-plan-note strong { color: var(--blue); }
+
   @media(max-width:960px){
     nav{padding:0 20px;}
     .nav-links{display:none;}
@@ -299,10 +424,70 @@
   @media(max-width:540px){
     .fg{grid-template-columns:1fr;}
     .ss-row{grid-template-columns:1fr;}
+    .dl-card{padding:36px 24px;}
+    .contact-card{padding:28px 22px 24px;}
   }
 </style>
 </head>
 <body>
+
+<!-- DOWNLOAD OVERLAY -->
+<div id="dl-overlay">
+  <div class="dl-card">
+    <div class="dl-spinner-wrap">
+      <div class="dl-spinner"></div>
+      <div class="dl-spinner-icon">📥</div>
+    </div>
+    <div class="dl-title">Downloading NetGram</div>
+    <div class="dl-sub">Your APK is being prepared. This may take a few seconds…</div>
+    <div class="dl-progress-bar">
+      <div class="dl-progress-fill" id="dl-fill"></div>
+    </div>
+    <div class="dl-percent" id="dl-percent">0%</div>
+  </div>
+</div>
+
+<!-- CONTACT POPUP -->
+<div id="contact-overlay" onclick="closeContactIfBg(event)">
+  <div class="contact-card">
+    <div class="contact-close" onclick="closeContact()">✕</div>
+    <div class="contact-badge">📞 Contact Us</div>
+    <div class="contact-title">Get in Touch</div>
+    <div class="contact-desc" id="contact-plan-desc">
+      Interested in a plan? Reach out to us and we'll get you set up right away.
+    </div>
+
+    <div class="contact-item">
+      <div class="contact-ico" style="background:var(--blue-pale);">✉️</div>
+      <div>
+        <div class="contact-label">Email</div>
+        <div class="contact-value">support@netgram.app</div>
+      </div>
+    </div>
+
+    <div class="contact-item">
+      <div class="contact-ico" style="background:var(--green-pale);">📱</div>
+      <div>
+        <div class="contact-label">Mobile / WhatsApp</div>
+        <div class="contact-value">+91 98765 43210</div>
+      </div>
+    </div>
+
+    <div class="contact-item">
+      <div class="contact-ico" style="background:var(--orange-pale);">☎️</div>
+      <div>
+        <div class="contact-label">Landline</div>
+        <div class="contact-value">01762-234567</div>
+      </div>
+    </div>
+
+    <hr class="contact-divider"/>
+    <div class="contact-plan-note" id="contact-footer-note">
+      We're available <strong>Mon–Sat, 9 AM – 7 PM IST</strong>.<br/>
+      We'll activate your plan within minutes of payment confirmation.
+    </div>
+  </div>
+</div>
 
 <!-- NAV -->
 <nav>
@@ -318,7 +503,7 @@
     <a href="#customers">Customers</a>
     <a href="#pricing">Pricing</a>
   </div>
-  <a href="https://drive.google.com/uc?export=download&id=15gKwF944HEWfcArV_X-yKo7Svqg-6hHN" class="btn-dl" onclick="handleDownload(event)">
+  <a href="#" class="btn-dl" onclick="handleDownload(event)">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
     Download App
   </a>
@@ -331,7 +516,7 @@
     <h1>Run Your ISP From<br/><span>One Powerful App</span></h1>
     <p class="hero-p">NetGram gives ISP admins complete control — manage OLTs, onboard customers with GPS precision, track VLAN assignments, and handle your entire team from your Android phone.</p>
     <div class="hero-actions">
-      <a href="https://drive.google.com/uc?export=download&id=15gKwF944HEWfcArV_X-yKo7Svqg-6hHN" class="btn-hero" onclick="handleDownload(event)">
+      <a href="#" class="btn-hero" onclick="handleDownload(event)">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Download for Android
       </a>
@@ -355,11 +540,11 @@
         <div class="p-screen">
           <div class="p-hdr"><div class="p-title">OLTs</div><div class="p-ico-btn">⚙️</div></div>
           <div class="p-search">🔍 Search OLTs...</div>
-          <div class="p-item"><div class="p-ico">📡</div><div><div class="p-name">Ayalki 3030</div><div class="p-sub">VLAN 1200–1500</div></div><div class="p-arr">›</div></div>
-          <div class="p-item"><div class="p-ico">📡</div><div><div class="p-name">Aherwan 3997</div><div class="p-sub">VLAN 1200–1500</div></div><div class="p-arr">›</div></div>
-          <div class="p-item"><div class="p-ico">📡</div><div><div class="p-name">Hanspur 3805</div><div class="p-sub">VLAN 1200–1500</div></div><div class="p-arr">›</div></div>
-          <div class="p-item"><div class="p-ico">📡</div><div><div class="p-name">Hamzapur 3982</div><div class="p-sub">VLAN 1200–1500</div></div><div class="p-arr">›</div></div>
-          <div class="p-item"><div class="p-ico">📡</div><div><div class="p-name">Bhirdana 3115</div><div class="p-sub">VLAN 1200–1500</div></div><div class="p-arr">›</div></div>
+          <div class="p-item"><div class="p-ico">📡</div><div><div class="p-name">Delhi 3030</div><div class="p-sub">VLAN 1200–1500</div></div><div class="p-arr">›</div></div>
+          <div class="p-item"><div class="p-ico">📡</div><div><div class="p-name">Mumbai 3997</div><div class="p-sub">VLAN 1200–1500</div></div><div class="p-arr">›</div></div>
+          <div class="p-item"><div class="p-ico">📡</div><div><div class="p-name">Bengaluru 3805</div><div class="p-sub">VLAN 1200–1500</div></div><div class="p-arr">›</div></div>
+          <div class="p-item"><div class="p-ico">📡</div><div><div class="p-name">Hyderabad 3982</div><div class="p-sub">VLAN 1200–1500</div></div><div class="p-arr">›</div></div>
+          <div class="p-item"><div class="p-ico">📡</div><div><div class="p-name">Chennai 3115</div><div class="p-sub">VLAN 1200–1500</div></div><div class="p-arr">›</div></div>
           <div class="p-fab">+</div>
         </div>
       </div>
@@ -474,7 +659,7 @@
       <div class="ff"><div class="ff-ico" style="background:#eef2ff;">〰</div><span class="fv">–22.5 to –18.3 dBm</span></div>
       <div class="ff"><div class="ff-ico" style="background:var(--green-pale);">📞</div><span class="fv">+91 98765 43210</span></div>
       <div class="ff"><div class="ff-ico" style="background:#ecfeff;">📟</div><span class="fv">01762-234567</span></div>
-      <div class="ff"><div class="ff-ico" style="background:var(--red-pale);">📍</div><span class="fv">Street No. 4, Sector 7, Ayalki Village</span></div>
+      <div class="ff"><div class="ff-ico" style="background:var(--red-pale);">📍</div><span class="fv">Street No. 4, Sector 7</span></div>
       <div class="gps-row">
         <div class="ff" style="flex:1;margin-bottom:0;"><div class="ff-ico" style="background:var(--orange-pale);">🎯</div><span>GPS Coordinates</span></div>
         <div class="gps-btn">🎯 Get Location</div>
@@ -586,7 +771,7 @@
         <div class="pf-row"><span class="ck">✓</span> User & role management</div>
         <div class="pf-row"><span class="ck">✓</span> Email support</div>
       </div>
-      <button class="pb pb-o">Get 6-Month Plan</button>
+      <button class="pb pb-o" onclick="openContact('6-Month Plan — ₹599')">Get 6-Month Plan</button>
     </div>
     <div class="pc best">
       <div class="best-lbl">Best Value · Save 16%</div>
@@ -603,7 +788,7 @@
         <div class="pf-row"><span class="ck">✓</span> Unlimited team accounts</div>
         <div class="pf-row"><span class="ck">✓</span> WhatsApp support</div>
       </div>
-      <button class="pb pb-f">Get 1-Year Plan</button>
+      <button class="pb pb-f" onclick="openContact('1-Year Plan — ₹999')">Get 1-Year Plan</button>
     </div>
   </div>
 </section>
@@ -613,7 +798,7 @@
   <h2>Ready to Manage Your ISP<br/>Smarter?</h2>
   <p>Download NetGram on Android and take full control of your network operations today.</p>
   <div class="cta-acts">
-    <a href="https://drive.google.com/uc?export=download&id=15gKwF944HEWfcArV_X-yKo7Svqg-6hHN" class="btn-cw" onclick="handleDownload(event)">
+    <a href="#" class="btn-cw" onclick="handleDownload(event)">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Download for Android
     </a>
@@ -637,10 +822,61 @@
   const obs = new IntersectionObserver(e => e.forEach(el => { if(el.isIntersecting) el.target.classList.add('on'); }), {threshold: 0.1});
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-function handleDownload(e) {
+  function handleDownload(e) {
     e.preventDefault();
-    window.location.href = "https://www.dropbox.com/scl/fi/jzr7qsyaerd08eu9a4o1n/NetGram-CRM.apk?rlkey=td24g09et9re9c5l1z73kxygx&st=dfnvq533&dl=1";
-}
+    const overlay = document.getElementById('dl-overlay');
+    const fill = document.getElementById('dl-fill');
+    const pct = document.getElementById('dl-percent');
+
+    overlay.classList.add('show');
+    let progress = 0;
+    fill.style.width = '0%';
+    pct.textContent = '0%';
+
+    const interval = setInterval(() => {
+      const step = progress < 60 ? Math.random() * 8 + 4
+                  : progress < 85 ? Math.random() * 3 + 1
+                  : Math.random() * 0.8;
+      progress = Math.min(progress + step, 92);
+      fill.style.width = progress + '%';
+      pct.textContent = Math.round(progress) + '%';
+    }, 200);
+
+    setTimeout(() => {
+      window.location.href = "https://www.dropbox.com/scl/fi/jzr7qsyaerd08eu9a4o1n/NetGram-CRM.apk?rlkey=td24g09et9re9c5l1z73kxygx&st=dfnvq533&dl=1";
+    }, 800);
+
+    setTimeout(() => {
+      clearInterval(interval);
+      fill.style.width = '100%';
+      pct.textContent = '100%';
+      setTimeout(() => {
+        overlay.classList.remove('show');
+      }, 900);
+    }, 3200);
+  }
+
+  function openContact(planName) {
+    const desc = document.getElementById('contact-plan-desc');
+    const note = document.getElementById('contact-footer-note');
+    desc.innerHTML = `You've selected the <strong style="color:var(--blue);">${planName}</strong>. Contact us to complete your purchase and get activated instantly.`;
+    note.innerHTML = `We're available <strong>Mon–Sat, 9 AM – 7 PM IST</strong>.<br/>We'll activate your plan within minutes of payment confirmation.`;
+    document.getElementById('contact-overlay').classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeContact() {
+    document.getElementById('contact-overlay').classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  function closeContactIfBg(e) {
+    if (e.target === document.getElementById('contact-overlay')) closeContact();
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeContact();
+  });
 </script>
 </body>
 </html>
