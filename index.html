@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NetGram — ISP Admin CRM App</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #f8fafc;
+    --bg2: #f1f5f9;
+    --surface: #ffffff;
+    --border: #e2e8f0;
+    --border2: #cbd5e1;
+    --blue: #2563eb;
+    --blue-light: #3b82f6;
+    --blue-pale: #eff6ff;
+    --blue-glow: rgba(37,99,235,0.15);
+    --cyan: #0891b2;
+    --orange: #ea580c;
+    --orange-pale: #fff7ed;
+    --green: #16a34a;
+    --green-pale: #f0fdf4;
+    --red: #dc2626;
+    --red-pale: #fef2f2;
+    --purple: #7c3aed;
+    --purple-pale: #faf5ff;
+    --text: #0f172a;
+    --text-muted: #64748b;
+    --text-dim: #475569;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 64px;
+    background: rgba(255,255,255,0.95); backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--font-display); font-weight: 700; font-size: 21px;
+    color: var(--text); text-decoration: none;
+    display: flex; align-items: center; gap: 10px;
+    letter-spacing: -0.3px;
+  }
+  .nav-logo-icon {
+    width: 32px; height: 32px; background: var(--blue); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: color .2s; }
+  .nav-links a:hover { color: var(--blue); }
+  .btn-dl {
+    background: var(--blue); border: none; color: white;
+    padding: 9px 18px; border-radius: 8px; font-size: 13.5px; font-weight: 600;
+    cursor: pointer; font-family: var(--font-body);
+    display: flex; align-items: center; gap: 6px;
+    transition: all .2s; box-shadow: 0 2px 8px var(--blue-glow);
+    text-decoration: none;
+  }
+  .btn-dl:hover { background: #1d4ed8; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    max-width: 1200px; margin: 0 auto;
+    padding: 72px 48px 64px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: var(--blue-pale); border: 1px solid #bfdbfe;
+    border-radius: 100px; padding: 5px 14px;
+    font-size: 12px; font-weight: 600; color: var(--blue);
+    margin-bottom: 20px; animation: fu .5s ease both;
+    letter-spacing: 0.2px;
+  }
+  .badge-dot { width: 6px; height: 6px; background: var(--blue); border-radius: 50%; animation: blink 2s infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+  @keyframes fu { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+  .hero h1 {
+    font-family: var(--font-display); font-weight: 700;
+    font-size: clamp(32px, 4vw, 50px); line-height: 1.1;
+    letter-spacing: -0.5px; margin-bottom: 18px;
+    animation: fu .5s .1s ease both;
+  }
+  .hero h1 span { background: linear-gradient(135deg, var(--blue), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-p { font-size: 15.5px; color: var(--text-dim); line-height: 1.75; margin-bottom: 32px; max-width: 460px; animation: fu .5s .2s ease both; font-weight: 400; }
+  .hero-actions { display: flex; gap: 12px; align-items: center; margin-bottom: 36px; animation: fu .5s .3s ease both; }
+  .btn-hero {
+    background: var(--blue); border: none; color: white;
+    padding: 12px 24px; border-radius: 10px; font-size: 14.5px; font-weight: 600;
+    cursor: pointer; font-family: var(--font-body);
+    display: flex; align-items: center; gap: 8px;
+    box-shadow: 0 4px 16px var(--blue-glow); transition: all .2s;
+    text-decoration: none;
+  }
+  .btn-hero:hover { background: #1d4ed8; transform: translateY(-2px); box-shadow: 0 8px 24px var(--blue-glow); }
+  .btn-ghost {
+    background: white; border: 1.5px solid var(--border2); color: var(--text-dim);
+    padding: 12px 22px; border-radius: 10px; font-size: 14.5px; font-weight: 500;
+    cursor: pointer; font-family: var(--font-body);
+    display: flex; align-items: center; gap: 8px; transition: all .2s;
+  }
+  .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
+  .hero-trust { display: flex; align-items: center; gap: 10px; animation: fu .5s .4s ease both; }
+  .avatars { display: flex; }
+  .av {
+    width: 28px; height: 28px; border-radius: 50%; border: 2px solid white;
+    margin-left: -8px; font-size: 11px; font-weight: 700; color: white;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .av:first-child { margin-left: 0; }
+  .trust-txt { font-size: 13px; color: var(--text-muted); font-weight: 400; }
+  .trust-txt strong { color: var(--text); font-weight: 600; }
+
+  /* PHONE */
+  .hero-right { display: flex; justify-content: center; animation: fu .6s .2s ease both; }
+  .phone-stack { position: relative; width: 260px; height: 510px; }
+  .phone-back {
+    position: absolute; width: 220px; height: 460px;
+    background: white; border: 1px solid var(--border); border-radius: 36px;
+    top: 28px; left: 50%; transform: translateX(-50%) rotate(6deg);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.07);
+  }
+  .phone {
+    position: absolute; width: 228px; height: 476px;
+    background: white; border: 1px solid #e2e8f0; border-radius: 36px;
+    overflow: hidden; box-shadow: 0 24px 72px rgba(0,0,0,0.13);
+    top: 14px; left: 50%; transform: translateX(-50%); z-index: 2;
+  }
+  .notch {
+    width: 80px; height: 22px; background: #111;
+    border-radius: 0 0 14px 14px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: center; gap: 5px;
+  }
+  .n-cam { width: 7px; height: 7px; background: #222; border-radius: 50%; }
+  .n-mic { width: 20px; height: 4px; background: #222; border-radius: 3px; }
+  .p-screen { padding: 11px; background: #f8fafc; height: calc(100% - 22px); overflow: hidden; }
+  .p-hdr { display: flex; justify-content: space-between; align-items: center; margin-bottom: 9px; }
+  .p-title { font-family: var(--font-display); font-size: 15px; font-weight: 700; color: #0f172a; }
+  .p-ico-btn { width: 26px; height: 26px; background: var(--blue-pale); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+  .p-search { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 7px 10px; font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 5px; margin-bottom: 7px; }
+  .p-item { background: white; border: 1px solid var(--border); border-radius: 9px; padding: 8px 9px; display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
+  .p-ico { width: 28px; height: 28px; background: var(--blue-pale); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
+  .p-name { font-size: 11px; font-weight: 600; color: #0f172a; }
+  .p-sub { font-size: 9px; color: var(--text-muted); margin-top: 1px; }
+  .p-arr { margin-left: auto; color: var(--text-muted); font-size: 12px; }
+  .p-fab { position: absolute; bottom: 18px; right: 14px; width: 34px; height: 34px; background: var(--blue); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; color: white; box-shadow: 0 4px 10px var(--blue-glow); }
+
+  /* SECTION */
+  .section { max-width: 1200px; margin: 0 auto; padding: 80px 48px; }
+  .section-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  .section-title { font-family: var(--font-display); font-size: clamp(26px, 3vw, 38px); font-weight: 700; letter-spacing: -0.5px; line-height: 1.12; margin-bottom: 12px; }
+  .section-sub { font-size: 15.5px; color: var(--text-dim); line-height: 1.75; margin-bottom: 44px; max-width: 500px; font-weight: 400; }
+
+  /* FEATURES */
+  .fg { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+  .fc {
+    background: white; border: 1px solid var(--border); border-radius: 16px; padding: 24px;
+    transition: all .25s; position: relative; overflow: hidden;
+  }
+  .fc::after { content:''; position:absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg,var(--blue),var(--cyan)); opacity:0; transition:opacity .25s; }
+  .fc:hover { border-color: #bfdbfe; transform: translateY(-3px); box-shadow: 0 12px 36px rgba(37,99,235,0.08); }
+  .fc:hover::after { opacity:1; }
+  .fi { width: 42px; height: 42px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 19px; margin-bottom: 14px; }
+  .fi-b{background:var(--blue-pale);} .fi-c{background:#ecfeff;} .fi-o{background:var(--orange-pale);}
+  .fi-g{background:var(--green-pale);} .fi-p{background:var(--purple-pale);} .fi-r{background:var(--red-pale);}
+  .ft { font-family: var(--font-body); font-size: 14.5px; font-weight: 700; margin-bottom: 7px; }
+  .fd { font-size: 13px; color: var(--text-muted); line-height: 1.65; font-weight: 400; }
+
+  /* SPLIT */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .si h3 { font-family: var(--font-display); font-size: 27px; font-weight: 700; letter-spacing: -0.4px; margin-bottom: 12px; }
+  .si p { font-size: 15px; color: var(--text-dim); line-height: 1.75; margin-bottom: 20px; font-weight: 400; }
+  .bullets { display: flex; flex-direction: column; gap: 9px; }
+  .bul { display: flex; align-items: center; gap: 9px; font-size: 14px; color: var(--text-dim); }
+  .bd { width: 6px; height: 6px; background: var(--blue); border-radius: 50%; flex-shrink: 0; }
+
+  /* MOCKUP */
+  .mk { background: white; border: 1px solid var(--border); border-radius: 18px; overflow: hidden; box-shadow: 0 16px 50px rgba(0,0,0,0.07); }
+  .mk-bar { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; }
+  .mk-title { font-family: var(--font-display); font-size: 15px; font-weight: 700; }
+  .mk-search { margin: 12px; background: var(--bg2); border: 1px solid var(--border); border-radius: 9px; padding: 8px 12px; font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
+  .mk-item { margin: 5px 12px; background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 11px 12px; display: flex; align-items: center; gap: 10px; transition: border-color .2s; cursor: pointer; }
+  .mk-item:hover { border-color: #bfdbfe; }
+  .mk-ico { width: 34px; height: 34px; background: var(--blue-pale); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+  .mk-name { font-size: 13px; font-weight: 600; }
+  .mk-sub { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+  .mk-arr { margin-left: auto; color: var(--text-muted); }
+  .mk-fab { width: 34px; height: 34px; background: var(--blue); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 18px; color: white; box-shadow: 0 4px 10px var(--blue-glow); flex-shrink: 0; }
+
+  /* FORM */
+  .fm { background: white; border: 1px solid var(--border); border-radius: 18px; padding: 22px; box-shadow: 0 16px 50px rgba(0,0,0,0.07); }
+  .fh { display: flex; align-items: center; gap: 11px; margin-bottom: 16px; }
+  .fh-ico { width: 40px; height: 40px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 19px; }
+  .fh h4 { font-family: var(--font-body); font-size: 14px; font-weight: 700; }
+  .fh p { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+  .ff { background: var(--bg2); border: 1px solid var(--border); border-radius: 9px; padding: 10px 13px; margin-bottom: 8px; display: flex; align-items: center; gap: 9px; font-size: 13px; color: var(--text-muted); }
+  .ff-ico { width: 24px; height: 24px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
+  .fv { color: var(--text); font-weight: 500; }
+  .gps-row { display: flex; gap: 8px; margin-bottom: 8px; }
+  .gps-btn { background: var(--orange); color: white; border-radius: 9px; padding: 10px 13px; font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 5px; white-space: nowrap; cursor: pointer; box-shadow: 0 4px 10px rgba(234,88,12,.25); }
+  .fsub { background: var(--blue); color: white; border-radius: 9px; padding: 13px; text-align: center; font-size: 14px; font-weight: 600; margin-top: 12px; cursor: pointer; box-shadow: 0 4px 12px var(--blue-glow); transition: all .2s; }
+  .fsub:hover { background: #1d4ed8; transform: translateY(-1px); }
+
+  /* DASHBOARD */
+  .dash-wrap { background: var(--bg2); border-radius: 20px; padding: 20px; border: 1px solid var(--border); box-shadow: 0 16px 50px rgba(0,0,0,0.05); }
+  .dash-bar { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 9px 14px; display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+  .db-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dg { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 12px; }
+  .mc { background: white; border: 1px solid var(--border); border-radius: 11px; padding: 13px; }
+  .mc-i { font-size: 18px; margin-bottom: 7px; }
+  .mc-v { font-family: var(--font-display); font-size: 22px; font-weight: 700; }
+  .mc-l { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+  .mc-c { font-size: 10px; margin-top: 4px; }
+  .cup { color: var(--green); } .cdn { color: var(--red); }
+
+  /* SETTINGS */
+  .sm { background: white; border: 1px solid var(--border); border-radius: 18px; padding: 22px; box-shadow: 0 16px 50px rgba(0,0,0,0.07); }
+  .ss-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px; }
+  .ss-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 11px; padding: 14px; display: flex; align-items: flex-start; gap: 10px; }
+  .ss-ico { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+  .ss-v { font-family: var(--font-display); font-size: 22px; font-weight: 700; }
+  .ss-l { font-size: 10px; color: var(--text-muted); margin-top: 1px; }
+  .sg-t { font-family: var(--font-body); font-size: 13px; font-weight: 700; margin-bottom: 2px; }
+  .sg-s { font-size: 11px; color: var(--text-muted); margin-bottom: 8px; }
+  .s-item { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 11px 13px; display: flex; align-items: center; gap: 10px; margin-bottom: 7px; cursor: pointer; transition: border-color .2s; }
+  .s-item:hover { border-color: #bfdbfe; }
+  .s-ico { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+  .s-n { font-size: 13px; font-weight: 600; }
+  .s-s { font-size: 10px; color: var(--text-muted); margin-top: 1px; }
+  .s-a { margin-left: auto; color: var(--text-muted); font-size: 14px; }
+
+  /* PRICING */
+  .pg { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 700px; margin: 0 auto; }
+  .pc { background: white; border: 1.5px solid var(--border); border-radius: 20px; padding: 30px; transition: all .25s; position: relative; }
+  .pc:hover { box-shadow: 0 16px 48px rgba(37,99,235,0.09); border-color: #bfdbfe; transform: translateY(-2px); }
+  .pc.best { border-color: var(--blue); background: linear-gradient(180deg, var(--blue-pale), white); box-shadow: 0 8px 36px rgba(37,99,235,0.12); }
+  .best-lbl { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--blue); color: white; padding: 4px 16px; border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: .5px; white-space: nowrap; }
+  .pp { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 9px; }
+  .pv { font-family: var(--font-display); font-size: 40px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+  .pv sup { font-size: 18px; vertical-align: super; }
+  .pperiod { font-size: 12px; color: var(--text-muted); margin-bottom: 5px; }
+  .psave { font-size: 12px; color: var(--green); font-weight: 600; margin-bottom: 22px; }
+  .pf { margin-bottom: 24px; }
+  .pf-row { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-dim); padding: 6px 0; border-bottom: 1px solid #f1f5f9; }
+  .pf-row:last-child { border-bottom: none; }
+  .ck { color: var(--green); font-weight: 700; }
+  .pb { width: 100%; padding: 12px; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: var(--font-body); border: none; transition: all .2s; }
+  .pb-o { background: white; border: 1.5px solid var(--border2) !important; color: var(--text-muted); }
+  .pb-o:hover { border-color: var(--blue) !important; color: var(--blue); }
+  .pb-f { background: var(--blue); color: white; box-shadow: 0 4px 12px var(--blue-glow); }
+  .pb-f:hover { background: #1d4ed8; transform: translateY(-1px); }
+
+  /* CTA */
+  .cta { background: linear-gradient(135deg, var(--blue) 0%, #1e40af 100%); padding: 72px 48px; text-align: center; }
+  .cta h2 { font-family: var(--font-display); font-size: 34px; font-weight: 700; letter-spacing: -0.5px; color: white; margin-bottom: 12px; }
+  .cta p { font-size: 15px; color: rgba(255,255,255,.78); margin-bottom: 30px; font-weight: 400; }
+  .cta-acts { display: flex; gap: 12px; justify-content: center; }
+  .btn-cw { background: white; color: var(--blue); padding: 13px 26px; border-radius: 10px; font-size: 14.5px; font-weight: 700; cursor: pointer; border: none; font-family: var(--font-body); display: flex; align-items: center; gap: 7px; box-shadow: 0 4px 14px rgba(0,0,0,.15); transition: all .2s; text-decoration: none; }
+  .btn-cw:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0,0,0,.2); }
+  .btn-co { background: transparent; color: white; padding: 13px 24px; border-radius: 10px; font-size: 14.5px; font-weight: 500; cursor: pointer; border: 1.5px solid rgba(255,255,255,.35); font-family: var(--font-body); transition: all .2s; }
+  .btn-co:hover { background: rgba(255,255,255,.1); }
+
+  /* FOOTER */
+  footer { background: #0f172a; padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; }
+  .fl { font-family: var(--font-display); font-weight: 700; font-size: 19px; color: white; }
+  .flinks { display: flex; gap: 22px; }
+  .flinks a { font-size: 13px; color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s; }
+  .flinks a:hover { color: white; }
+  .fc2 { font-size: 12px; color: rgba(255,255,255,.3); }
+
+  /* UTILS */
+  hr.div { border: none; border-top: 1px solid var(--border); margin: 0; }
+  .stripe { background: var(--bg2); }
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.on { opacity: 1; transform: translateY(0); }
+  .d1{transition-delay:.1s} .d2{transition-delay:.2s} .d3{transition-delay:.3s}
+
+  @media(max-width:960px){
+    nav{padding:0 20px;}
+    .nav-links{display:none;}
+    .hero{grid-template-columns:1fr;padding:48px 24px 40px;}
+    .hero-right{display:none;}
+    .split{grid-template-columns:1fr;}
+    .fg{grid-template-columns:1fr 1fr;}
+    .pg{grid-template-columns:1fr;}
+    .section{padding:60px 24px;}
+    .dg{grid-template-columns:1fr 1fr;}
+    footer{flex-direction:column;gap:14px;text-align:center;}
+    .cta{padding:56px 24px;}
+  }
+  @media(max-width:540px){
+    .fg{grid-template-columns:1fr;}
+    .ss-row{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6l11 7L23 6"/><path d="M2 6h20v12H2z"/></svg>
+    </div>
+    NetGram
+  </a>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#olt">OLT</a>
+    <a href="#customers">Customers</a>
+    <a href="#pricing">Pricing</a>
+  </div>
+  <a href="https://drive.google.com/uc?export=download&id=15gKwF944HEWfcArV_X-yKo7Svqg-6hHN" class="btn-dl" onclick="handleDownload(event)">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Download App
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-badge"><div class="badge-dot"></div>Android CRM App for ISP Admins</div>
+    <h1>Run Your ISP From<br/><span>One Powerful App</span></h1>
+    <p class="hero-p">NetGram gives ISP admins complete control — manage OLTs, onboard customers with GPS precision, track VLAN assignments, and handle your entire team from your Android phone.</p>
+    <div class="hero-actions">
+      <a href="https://drive.google.com/uc?export=download&id=15gKwF944HEWfcArV_X-yKo7Svqg-6hHN" class="btn-hero" onclick="handleDownload(event)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download for Android
+      </a>
+      <button class="btn-ghost">▶ Watch Demo</button>
+    </div>
+    <div class="hero-trust">
+      <div class="avatars">
+        <div class="av" style="background:#2563eb;">R</div>
+        <div class="av" style="background:#0891b2;">S</div>
+        <div class="av" style="background:#16a34a;">M</div>
+        <div class="av" style="background:#7c3aed;">P</div>
+      </div>
+      <div class="trust-txt">Trusted by <strong>10+ ISP admins</strong> across India</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="phone-stack">
+      <div class="phone-back"></div>
+      <div class="phone">
+        <div class="notch"><div class="n-cam"></div><div class="n-mic"></div></div>
+        <div class="p-screen">
+          <div class="p-hdr"><div class="p-title">OLTs</div><div class="p-ico-btn">⚙️</div></div>
+          <div class="p-search">🔍 Search OLTs...</div>
+          <div class="p-item"><div class="p-ico">📡</div><div><div class="p-name">Ayalki 3030</div><div class="p-sub">VLAN 1200–1500</div></div><div class="p-arr">›</div></div>
+          <div class="p-item"><div class="p-ico">📡</div><div><div class="p-name">Aherwan 3997</div><div class="p-sub">VLAN 1200–1500</div></div><div class="p-arr">›</div></div>
+          <div class="p-item"><div class="p-ico">📡</div><div><div class="p-name">Hanspur 3805</div><div class="p-sub">VLAN 1200–1500</div></div><div class="p-arr">›</div></div>
+          <div class="p-item"><div class="p-ico">📡</div><div><div class="p-name">Hamzapur 3982</div><div class="p-sub">VLAN 1200–1500</div></div><div class="p-arr">›</div></div>
+          <div class="p-item"><div class="p-ico">📡</div><div><div class="p-name">Bhirdana 3115</div><div class="p-sub">VLAN 1200–1500</div></div><div class="p-arr">›</div></div>
+          <div class="p-fab">+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div"/>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto 44px;">
+    <div class="section-tag">Everything You Need</div>
+    <h2 class="section-title">Built for ISP Admins,<br/>End to End</h2>
+    <p class="section-sub" style="margin:0 auto;">All the tools you need to run your ISP — right in your Android phone.</p>
+  </div>
+  <div class="fg">
+    <div class="fc reveal"><div class="fi fi-b">📡</div><div class="ft">OLT Management</div><div class="fd">Add, search, and manage all your Optical Line Terminals. Set VLAN ranges like 1200–1500 per OLT and monitor each node.</div></div>
+    <div class="fc reveal d1"><div class="fi fi-c">👥</div><div class="ft">Customer Database</div><div class="fd">Rich profiles with VLAN number, optical range, mobile, landline, address, and GPS — all in one place. 682 customers tracked.</div></div>
+    <div class="fc reveal d2"><div class="fi fi-o">📍</div><div class="ft">GPS Geo-Tagging</div><div class="fd">One-tap GPS capture for every customer. Instant latitude/longitude for field visits and new installations.</div></div>
+    <div class="fc reveal"><div class="fi fi-r">⚠️</div><div class="ft">Inactive Tracking</div><div class="fd">Auto-identify inactive customers. Add them one by one or bulk-import from Excel to run reactivation campaigns.</div></div>
+    <div class="fc reveal d1"><div class="fi fi-p">👤</div><div class="ft">User & Role Management</div><div class="fd">Create employee accounts with name, email, phone and role. Control team access — Employee or Admin — securely.</div></div>
+    <div class="fc reveal d2"><div class="fi fi-g">📤</div><div class="ft">Excel Bulk Import</div><div class="fd">Upload hundreds of customer records from Excel in one go. Built-in validation ensures clean, error-free imports.</div></div>
+  </div>
+</section>
+
+<hr class="div"/>
+
+<!-- DASHBOARD -->
+<section class="section stripe">
+  <div class="reveal" style="text-align:center;max-width:540px;margin:0 auto 36px;">
+    <div class="section-tag">Live Overview</div>
+    <h2 class="section-title">Your Network at a Glance</h2>
+    <p class="section-sub" style="margin:0 auto;">Key metrics — customers, OLTs, and activity — always up to date.</p>
+  </div>
+  <div class="dash-wrap reveal">
+    <div class="dash-bar">
+      <div class="db-dot" style="background:#ef4444;"></div>
+      <div class="db-dot" style="background:#eab308;"></div>
+      <div class="db-dot" style="background:#22c55e;"></div>
+      <span style="font-size:12px;color:var(--text-muted);margin-left:8px;">NetGram Admin Panel</span>
+    </div>
+    <div class="dg">
+      <div class="mc"><div class="mc-i">👥</div><div class="mc-v">1682</div><div class="mc-l">Total Customers</div><div class="mc-c cup">↑ 23 this month</div></div>
+      <div class="mc"><div class="mc-i">⚠️</div><div class="mc-v">125</div><div class="mc-l">Inactive Customers</div><div class="mc-c cdn">↑ 12 this week</div></div>
+      <div class="mc"><div class="mc-i">📡</div><div class="mc-v">12</div><div class="mc-l">Active OLTs</div><div class="mc-c cup">All online</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="div"/>
+
+<!-- OLT -->
+<section class="section" id="olt">
+  <div class="split reveal">
+    <div class="mk">
+      <div class="mk-bar">
+        <div class="mk-title">OLTs</div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <div style="width:28px;height:28px;background:var(--bg2);border:1px solid var(--border);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;">⚙️</div>
+          <div class="mk-fab">+</div>
+        </div>
+      </div>
+      <div class="mk-search">🔍 Search OLTs...</div>
+      <div class="mk-item"><div class="mk-ico">📡</div><div><div class="mk-name">Delhi 3030</div><div class="mk-sub">VLAN Range: 1200–1500</div></div><div class="mk-arr">›</div></div>
+      <div class="mk-item"><div class="mk-ico">📡</div><div><div class="mk-name">Mumbai 3997</div><div class="mk-sub">VLAN Range: 1200–1500</div></div><div class="mk-arr">›</div></div>
+      <div class="mk-item"><div class="mk-ico">📡</div><div><div class="mk-name">Bengaluru 3247</div><div class="mk-sub">VLAN Range: 1200–1500</div></div><div class="mk-arr">›</div></div>
+      <div class="mk-item"><div class="mk-ico">📡</div><div><div class="mk-name">Hyderabad 3115</div><div class="mk-sub">VLAN Range: 1200–1500</div></div><div class="mk-arr">›</div></div>
+      <div class="mk-item"><div class="mk-ico">📡</div><div><div class="mk-name">Chennai 3982</div><div class="mk-sub">VLAN Range: 1200–1500</div></div><div class="mk-arr">›</div></div>
+      <div class="mk-item"><div class="mk-ico">📡</div><div><div class="mk-name">Kolkata 3021</div><div class="mk-sub">VLAN Range: 1200–1500</div></div><div class="mk-arr">›</div></div>
+      <div style="height:12px;"></div>
+    </div>
+    <div class="si">
+      <div class="section-tag">OLT Management</div>
+      <h3>Full Control Over Your Optical Network</h3>
+      <p>Manage every OLT from one list. Set VLAN ranges, search by name, and drill into each OLT to see all connected customers.</p>
+      <div class="bullets">
+        <div class="bul"><div class="bd"></div>Add new OLTs with name and VLAN range</div>
+        <div class="bul"><div class="bd"></div>Instant search across all nodes</div>
+        <div class="bul"><div class="bd"></div>View customer count per OLT</div>
+        <div class="bul"><div class="bd"></div>Quick settings via gear icon</div>
+        <div class="bul"><div class="bd"></div>One-tap add with floating + button</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div"/>
+
+<!-- CUSTOMERS -->
+<section class="section stripe" id="customers">
+  <div class="split reveal">
+    <div class="si">
+      <div class="section-tag">Customer Profiles</div>
+      <h3>Add Customers with Complete Details</h3>
+      <p>Capture everything — VLAN, optical range, phone, landline, address, and GPS — all in one form. No more scattered records.</p>
+      <div class="bullets">
+        <div class="bul"><div class="bd"></div>Assign VLAN numbers within OLT range</div>
+        <div class="bul"><div class="bd"></div>Auto-capture GPS coordinates with one tap</div>
+        <div class="bul"><div class="bd"></div>Store mobile and landline numbers</div>
+        <div class="bul"><div class="bd"></div>Full address with location details</div>
+        <div class="bul"><div class="bd"></div>Bulk import hundreds via Excel</div>
+      </div>
+    </div>
+    <div class="fm">
+      <div class="fh">
+        <div class="fh-ico" style="background:var(--orange-pale);">👤</div>
+        <div><h4>Add New Customer</h4><p>Create a new customer profile</p></div>
+      </div>
+      <div class="ff"><div class="ff-ico" style="background:var(--blue-pale);">👤</div><span class="fv">Rajesh Kumar</span></div>
+      <div class="ff"><div class="ff-ico" style="background:var(--purple-pale);">#</div><span class="fv">1247</span></div>
+      <div class="ff"><div class="ff-ico" style="background:#eef2ff;">〰</div><span class="fv">–22.5 to –18.3 dBm</span></div>
+      <div class="ff"><div class="ff-ico" style="background:var(--green-pale);">📞</div><span class="fv">+91 98765 43210</span></div>
+      <div class="ff"><div class="ff-ico" style="background:#ecfeff;">📟</div><span class="fv">01762-234567</span></div>
+      <div class="ff"><div class="ff-ico" style="background:var(--red-pale);">📍</div><span class="fv">Street No. 4, Sector 7, Ayalki Village</span></div>
+      <div class="gps-row">
+        <div class="ff" style="flex:1;margin-bottom:0;"><div class="ff-ico" style="background:var(--orange-pale);">🎯</div><span>GPS Coordinates</span></div>
+        <div class="gps-btn">🎯 Get Location</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:7px;">
+        <div class="ff" style="margin-bottom:0;"><span class="fv">30.7046° N</span></div>
+        <div class="ff" style="margin-bottom:0;"><span class="fv">76.7179° E</span></div>
+      </div>
+      <div class="fsub">Save Customer</div>
+    </div>
+  </div>
+</section>
+
+<hr class="div"/>
+
+<!-- SETTINGS -->
+<section class="section">
+  <div class="split reveal">
+    <div class="sm">
+      <div style="font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:14px;">⚙️ Settings</div>
+      <div class="ss-row">
+        <div class="ss-card"><div class="ss-ico" style="background:var(--blue-pale);">👥</div><div><div class="ss-v">1682</div><div class="ss-l">Total Customers</div></div></div>
+        <div class="ss-card"><div class="ss-ico" style="background:var(--orange-pale);">⚠️</div><div><div class="ss-v">125</div><div class="ss-l">Inactive</div></div></div>
+      </div>
+      <div class="sg-t">Data Management</div>
+      <div class="sg-s">Upload and manage customer data</div>
+      <div class="s-item"><div class="s-ico" style="background:var(--blue-pale);">📤</div><div><div class="s-n">Upload Customers</div><div class="s-s">Import from Excel</div></div><div class="s-a">›</div></div>
+      <div class="s-item"><div class="s-ico" style="background:var(--orange-pale);">👤</div><div><div class="s-n">Manage Inactive Customers</div><div class="s-s">Single or bulk Excel import</div></div><div class="s-a">›</div></div>
+      <div style="height:7px;"></div>
+      <div class="sg-t">Customer Management</div>
+      <div class="sg-s">View and manage customer accounts</div>
+      <div class="s-item"><div class="s-ico" style="background:var(--purple-pale);">🚫</div><div><div class="s-n">Inactive Customers</div><div class="s-s">View inactive customer list</div></div><div class="s-a">›</div></div>
+      <div class="s-item"><div class="s-ico" style="background:var(--green-pale);">🔐</div><div><div class="s-n">Account Management</div><div class="s-s">Create and manage users</div></div><div class="s-a">›</div></div>
+    </div>
+    <div class="si">
+      <div class="section-tag">Admin Settings</div>
+      <h3>Centralized Admin Control</h3>
+      <p>See live stats, manage data uploads, handle inactive customers, and control team access — all from one clean settings screen.</p>
+      <div class="bullets">
+        <div class="bul"><div class="bd"></div>Live stats: total & inactive counts</div>
+        <div class="bul"><div class="bd"></div>Excel bulk import with validation</div>
+        <div class="bul"><div class="bd"></div>Inactive customer reactivation tools</div>
+        <div class="bul"><div class="bd"></div>Role-based user creation</div>
+        <div class="bul"><div class="bd"></div>Secure account management</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div"/>
+
+<!-- ACCOUNT MANAGEMENT -->
+<section class="section stripe">
+  <div class="split reveal">
+    <div class="si">
+      <div class="section-tag">Account Management</div>
+      <h3>Create Team Accounts with Roles</h3>
+      <p>Add employees and sub-admins. Control who has access to what — keep your operations secure and organized.</p>
+      <div class="bullets">
+        <div class="bul"><div class="bd"></div>Create employee accounts instantly</div>
+        <div class="bul"><div class="bd"></div>Assign Employee or Admin roles</div>
+        <div class="bul"><div class="bd"></div>Search users by email or name</div>
+        <div class="bul"><div class="bd"></div>Manage access without complexity</div>
+      </div>
+    </div>
+    <div class="fm">
+      <div class="fh">
+        <div class="fh-ico" style="background:var(--blue-pale);">➕</div>
+        <div><h4>Create New User</h4><p>Add a new user to the system</p></div>
+      </div>
+      <div class="ff"><div class="ff-ico" style="background:var(--blue-pale);">✉️</div><span class="fv">Suresh Mehta</span></div>
+      <div class="ff"><div class="ff-ico" style="background:var(--blue-pale);">✉️</div><span class="fv">suresh@netgram.app</span></div>
+      <div class="ff"><div class="ff-ico" style="background:var(--blue-pale);">✉️</div><span class="fv">+91 99887 76655</span></div>
+      <div class="ff"><div class="ff-ico" style="background:var(--blue-pale);">🔒</div><span style="color:var(--text-muted);">••••••••</span></div>
+      <div class="ff" style="justify-content:space-between;">
+        <div style="display:flex;align-items:center;gap:9px;"><div class="ff-ico" style="background:var(--bg2);">💼</div><span class="fv">Employee</span></div>
+        <span style="color:var(--text-muted);">▼</span>
+      </div>
+      <div class="fsub">Create User</div>
+      <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border);">
+        <div style="font-size:13px;font-weight:700;margin-bottom:7px;">👥 Manage Users <span style="color:var(--text-muted);font-weight:400;font-size:12px;">· 3 users registered</span></div>
+        <div class="mk-search" style="margin:0;">🔍 Search users by email or name...</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div"/>
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <div class="reveal" style="text-align:center;max-width:500px;margin:0 auto 44px;">
+    <div class="section-tag">Pricing</div>
+    <h2 class="section-title">Simple, Affordable Plans</h2>
+    <p class="section-sub" style="margin:0 auto;">Choose the plan that fits your ISP. No hidden fees.</p>
+  </div>
+  <div class="pg reveal">
+    <div class="pc">
+      <div class="pp">6 Months</div>
+      <div class="pv"><sup>₹</sup>599</div>
+      <div class="pperiod">one-time · valid 6 months</div>
+      <div class="psave">₹100/month effective</div>
+      <div class="pf">
+        <div class="pf-row"><span class="ck">✓</span> Unlimited OLT management</div>
+        <div class="pf-row"><span class="ck">✓</span> Unlimited customer profiles</div>
+        <div class="pf-row"><span class="ck">✓</span> GPS geo-tagging</div>
+        <div class="pf-row"><span class="ck">✓</span> Excel bulk import</div>
+        <div class="pf-row"><span class="ck">✓</span> Inactive customer tracking</div>
+        <div class="pf-row"><span class="ck">✓</span> User & role management</div>
+        <div class="pf-row"><span class="ck">✓</span> Email support</div>
+      </div>
+      <button class="pb pb-o">Get 6-Month Plan</button>
+    </div>
+    <div class="pc best">
+      <div class="best-lbl">Best Value · Save 16%</div>
+      <div class="pp">1 Year</div>
+      <div class="pv"><sup>₹</sup>999</div>
+      <div class="pperiod">one-time · valid 12 months</div>
+      <div class="psave">₹83/month effective — lowest price</div>
+      <div class="pf">
+        <div class="pf-row"><span class="ck">✓</span> Everything in 6-Month plan</div>
+        <div class="pf-row"><span class="ck">✓</span> Priority support</div>
+        <div class="pf-row"><span class="ck">✓</span> Early access to new features</div>
+        <div class="pf-row"><span class="ck">✓</span> Free onboarding assistance</div>
+        <div class="pf-row"><span class="ck">✓</span> Data backup & export</div>
+        <div class="pf-row"><span class="ck">✓</span> Unlimited team accounts</div>
+        <div class="pf-row"><span class="ck">✓</span> WhatsApp support</div>
+      </div>
+      <button class="pb pb-f">Get 1-Year Plan</button>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <h2>Ready to Manage Your ISP<br/>Smarter?</h2>
+  <p>Download NetGram on Android and take full control of your network operations today.</p>
+  <div class="cta-acts">
+    <a href="https://drive.google.com/uc?export=download&id=15gKwF944HEWfcArV_X-yKo7Svqg-6hHN" class="btn-cw" onclick="handleDownload(event)">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download for Android
+    </a>
+    <button class="btn-co" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">View Pricing</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fl">NetGram</div>
+  <div class="flinks">
+    <a href="#">Features</a>
+    <a href="#">Pricing</a>
+    <a href="#">Support</a>
+    <a href="#">Privacy Policy</a>
+  </div>
+  <div class="fc2">© 2026 NetGram. All rights reserved.</div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(e => e.forEach(el => { if(el.isIntersecting) el.target.classList.add('on'); }), {threshold: 0.1});
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+function handleDownload(e) {
+    e.preventDefault();
+    window.location.href = "https://www.dropbox.com/scl/fi/jzr7qsyaerd08eu9a4o1n/NetGram-CRM.apk?rlkey=td24g09et9re9c5l1z73kxygx&st=dfnvq533&dl=1";
+}
+</script>
+</body>
+</html>
