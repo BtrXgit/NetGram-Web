@@ -1,2 +1,2 @@
-# NetGram-Web
-NetGram Website
+# Relynk-Web
+Relynk Website

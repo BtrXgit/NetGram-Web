@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>NetGram — CRM App</title>
+<title>Relynk — CRM App</title>
 <style>
   :root {
     --bg: #f5f7fa;
@@ -46,12 +46,11 @@
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border-bottom: 1px solid var(--border);
   }
-  .nav-logo {
-    font-family: var(--font); font-weight: 700; font-size: 18px;
-    color: var(--text); text-decoration: none;
-    display: flex; align-items: center; gap: 9px;
-    letter-spacing: -0.4px;
-  }
+.nav-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
   .nav-logo-icon {
     width: 30px; height: 30px; background: var(--navy); border-radius: 8px;
     display: flex; align-items: center; justify-content: center;
@@ -416,7 +415,7 @@
       <div class="dl-spinner"></div>
       <div class="dl-spinner-icon">📥</div>
     </div>
-    <div class="dl-title">Downloading NetGram</div>
+    <div class="dl-title">Downloading Relynk</div>
     <div class="dl-sub">Your APK is being prepared. This may take a few seconds…</div>
     <div class="dl-progress-bar">
       <div class="dl-progress-fill" id="dl-fill"></div>
@@ -439,7 +438,7 @@
       <div>
         <div class="contact-label">Email</div>
         <div class="contact-value">
-          <a href="mailto:netgram.crm@gmail.com" style="color:inherit;text-decoration:none;">netgram.crm@gmail.com</a>
+          <a href="mailto:relynk.crm@gmail.com" style="color:inherit;text-decoration:none;">relynk.crm@gmail.com</a>
         </div>
       </div>
     </div>
@@ -473,12 +472,9 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">
-    <div class="nav-logo-icon">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6l11 7L23 6"/><path d="M2 6h20v12H2z"/></svg>
-    </div>
-    NetGram
-  </a>
+ <a href="#" class="nav-logo">
+  <img src="relynk.svg" alt="Relynk" height="138">
+</a>
   <div class="nav-links">
     <a href="#features">Features</a>
     <a href="#olt">OLT</a>
@@ -496,7 +492,7 @@
   <div>
     <div class="hero-badge"><div class="badge-dot"></div>Android CRM App for ISP Admins</div>
     <h1>Run Your ISP From<br/><span>One Powerful App</span></h1>
-    <p class="hero-p">NetGram gives ISP admins complete control — manage OLTs, onboard customers with GPS precision, track VLAN assignments, and handle your entire team from your Android phone.</p>
+    <p class="hero-p">Relynk gives ISP admins complete control — manage OLTs, onboard customers with GPS precision, track VLAN assignments, and handle your entire team from your Android phone.</p>
     <div class="hero-actions">
       <a href="#" class="btn-hero" onclick="handleDownload(event)">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -567,7 +563,7 @@
       <div class="db-dot" style="background:#ef4444;"></div>
       <div class="db-dot" style="background:#eab308;"></div>
       <div class="db-dot" style="background:#22c55e;"></div>
-      <span style="font-size:11.5px;color:var(--text-muted);margin-left:8px;letter-spacing:-0.1px;">NetGram Admin Panel</span>
+      <span style="font-size:11.5px;color:var(--text-muted);margin-left:8px;letter-spacing:-0.1px;">Relynk Admin Panel</span>
     </div>
     <div class="dg">
       <div class="mc"><div class="mc-i">👥</div><div class="mc-v">2,000</div><div class="mc-l">Total Customers</div><div class="mc-c cup">↑ 23 this month</div></div>
@@ -713,7 +709,7 @@
         <div><h4>Create New User</h4><p>Add a new user to the system</p></div>
       </div>
       <div class="ff"><div class="ff-ico" style="background:var(--navy-pale);">✉️</div><span class="fv">Suresh Mehta</span></div>
-      <div class="ff"><div class="ff-ico" style="background:var(--navy-pale);">✉️</div><span class="fv">suresh@netgram.app</span></div>
+      <div class="ff"><div class="ff-ico" style="background:var(--navy-pale);">✉️</div><span class="fv">suresh@relynk.app</span></div>
       <div class="ff"><div class="ff-ico" style="background:var(--navy-pale);">✉️</div><span class="fv">+91 99887 76655</span></div>
       <div class="ff"><div class="ff-ico" style="background:var(--navy-pale);">🔒</div><span style="color:var(--text-muted);">••••••••</span></div>
       <div class="ff" style="justify-content:space-between;">
@@ -778,7 +774,7 @@
 <!-- CTA -->
 <div class="cta">
   <h2>Ready to Manage Your ISP<br/>Smarter?</h2>
-  <p>Download NetGram on Android and take full control of your network operations today.</p>
+  <p>Download Relynk on Android and take full control of your network operations today.</p>
   <div class="cta-acts">
     <a href="#" class="btn-cw" onclick="handleDownload(event)">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -790,14 +786,14 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="fl">NetGram</div>
+  <div class="fl">Relynk</div>
   <div class="flinks">
     <a href="#">Features</a>
     <a href="#">Pricing</a>
     <a href="#">Support</a>
     <a href="#">Privacy Policy</a>
   </div>
-  <div class="fc2">© 2026 NetGram. All rights reserved.</div>
+  <div class="fc2">© 2026 Relynk. All rights reserved.</div>
 </footer>
 
 <script>
@@ -825,7 +821,7 @@
     }, 200);
 
     setTimeout(() => {
-      window.location.href = "https://www.dropbox.com/scl/fi/jzr7qsyaerd08eu9a4o1n/NetGram-CRM.apk?rlkey=td24g09et9re9c5l1z73kxygx&st=dfnvq533&dl=1";
+      window.location.href = "https://www.dropbox.com/scl/fi/jzr7qsyaerd08eu9a4o1n/Relynk-CRM.apk?rlkey=td24g09et9re9c5l1z73kxygx&st=dfnvq533&dl=1";
     }, 800);
 
     setTimeout(() => {
