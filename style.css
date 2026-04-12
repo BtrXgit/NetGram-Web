@@ -1365,23 +1365,6 @@ hr.div {
 .d2 { transition-delay: .24s }
 .d3 { transition-delay: .36s }
 
-/* ===== DOWNLOAD OVERLAY ===== */
-#dl-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: rgba(9, 22, 42, 0.6);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  align-items: center;
-  justify-content: center;
-}
-
-#dl-overlay.show {
-  display: flex;
-  animation: fadeIn .2s ease;
-}
 
 @keyframes fadeIn {
   from { opacity: 0 }

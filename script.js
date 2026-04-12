@@ -45,43 +45,16 @@ const counterObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('[data-count]').forEach((el) => counterObserver.observe(el));
 
 
-// ===== DOWNLOAD HANDLER =====
 function handleDownload(e) {
   e.preventDefault();
 
-  const overlay = document.getElementById('dl-overlay');
-  const fill = document.getElementById('dl-fill');
-  const pct = document.getElementById('dl-percent');
+  const playStoreUrl = "https://play.google.com/store/apps/details?id=netgram.jasj.crm";
 
-  overlay.classList.add('show');
-  let progress = 0;
-  fill.style.width = '0%';
-  pct.textContent = '0%';
-
-  const interval = setInterval(() => {
-    const step =
-      progress < 60 ? Math.random() * 8 + 4 :
-      progress < 85 ? Math.random() * 3 + 1 :
-      Math.random() * 0.8;
-
-    progress = Math.min(progress + step, 92);
-    fill.style.width = progress + '%';
-    pct.textContent = Math.round(progress) + '%';
-  }, 200);
-
-  // Trigger actual download
-  setTimeout(() => {
-    window.location.href =
-      'https://www.dropbox.com/scl/fi/7ml7fbnoaf9d2o9ev9n7d/Relynk.apk?rlkey=hq09wyb2pnu11zinb5wm8en48&st=7527fc93&dl=1';
-  }, 800);
-
-  // Complete progress bar
-  setTimeout(() => {
-    clearInterval(interval);
-    fill.style.width = '100%';
-    pct.textContent = '100%';
-    setTimeout(() => overlay.classList.remove('show'), 900);
-  }, 3200);
+  if (/Android/i.test(navigator.userAgent)) {
+    window.location.href = playStoreUrl;
+  } else {
+    window.open(playStoreUrl, "_blank");
+  }
 }
 
 
