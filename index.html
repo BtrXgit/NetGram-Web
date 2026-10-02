@@ -7,31 +7,34 @@
   <title>Relynk - MSO CRM App for OLT & ISP Customer Management</title>
   <meta name="google-site-verification" content="j3lr04S2DX5Y_TOq9Ynu6AcFKn8KERR_1oFK6LRQ-oM" />
   <meta name="title" content="Relynk - MSO App to Manage OLTs, VLANs & ISP Customer Data">
-  <meta name="description" content="Relynk is a CRM app built for MSO admins. Manage your OLTs, VLAN assignments, and customer records across all connected ISPs — from a single Android app. GPS tagging, bulk Excel import, and role-based team access included.">
+  <meta name="description" content="Relynk is a CRM app built for MSO admins. Manage your OLTs, VLAN assignments, and customer records across all connected ISPs from a single Android app. GPS tagging, bulk Excel import, and role-based team access included.">
   <meta name="keywords" content="MSO CRM app, MSO admin app, OLT management software, VLAN tracking app, ISP customer management, MSO broadband software, multi system operator app, fiber network CRM, MSO Android app, ISP customer database, broadband network management, OLT VLAN manager India">
   <meta name="author" content="Relynk Team">
-  <meta name="theme-color" content="#0a1e3d" />
+  <meta name="theme-color" content="#e9e9ec" />
   <link rel="icon" type="image/x-icon" href="./icon.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-
   <!-- CONTACT POPUP -->
   <div id="contact-overlay" onclick="closeContactIfBg(event)">
     <div class="contact-card">
-      <div class="contact-close" onclick="closeContact()">✕</div>
-      <div class="contact-badge">📞 Contact Us</div>
-      <div class="contact-title">Get in Touch</div>
+      <div class="contact-close" onclick="closeContact()" aria-label="Close">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </div>
+      <div class="contact-badge"><span class="cb-dot"></span>Contact us</div>
+      <div class="contact-title">Get in touch</div>
       <div class="contact-desc" id="contact-plan-desc">
-        Interested in a plan? Reach out to us and we'll get you set up right away.
+        Interested in a plan? Reach out and we'll get you activated right away.
       </div>
       <div class="contact-item">
-        <div class="contact-ico" style="background:var(--navy-pale);">✉️</div>
+        <div class="contact-ico">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m2 7 10 6L22 7"/></svg>
+        </div>
         <div>
           <div class="contact-label">Email</div>
           <div class="contact-value">
@@ -40,19 +43,22 @@
         </div>
       </div>
       <div class="contact-item">
-        <div class="contact-ico" style="background:var(--green-pale);">📱</div>
+        <div class="contact-ico">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
         <div>
           <div class="contact-label">Mobile / WhatsApp</div>
           <div class="contact-value">
-            <a href="tel:+919416061425" style="color:inherit;text-decoration:none;">+91 9416061425</a>
-            &nbsp;·&nbsp;
-            <a href="https://wa.me/919416061425" target="_blank"
-              style="color:var(--green);text-decoration:none;">WhatsApp</a>
+            <a href="tel:+919416061425" style="color:inherit;text-decoration:none;">+91 94160 61425</a>
+            <span class="sep">·</span>
+            <a href="https://wa.me/919416061425" target="_blank" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">WhatsApp</a>
           </div>
         </div>
       </div>
       <div class="contact-item">
-        <div class="contact-ico" style="background:var(--orange-pale);">☎️</div>
+        <div class="contact-ico">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
         <div>
           <div class="contact-label">Landline</div>
           <div class="contact-value">
@@ -62,16 +68,17 @@
       </div>
       <hr class="contact-divider" />
       <div class="contact-plan-note" id="contact-footer-note">
-        Available <strong>Mon–Sat, 9 AM – 5 PM IST</strong>.<br />
-        We'll activate your plan within minutes of payment confirmation.
+        Available <strong>Mon-Sat, 9 AM - 5 PM IST</strong>.<br />
+        Plans activate within minutes of payment confirmation.
       </div>
     </div>
   </div>
 
   <!-- NAV -->
-  <nav>
+  <nav id="nav">
     <a href="#" class="nav-logo">
-      <img src="relynk.svg" alt="Relynk" height="138">
+      <img class="logo-img" src="./icon.png" alt="Relynk logo" />
+      <span class="logo-word">Relynk</span>
     </a>
     <div class="nav-links">
       <a href="#features">Features</a>
@@ -79,597 +86,396 @@
       <a href="#customers">Customers</a>
       <a href="#pricing">Pricing</a>
     </div>
-    <a href="#" class="btn-dl" onclick="handleDownload(event)">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"
-        stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
-        <polyline points="7 10 12 15 17 10" />
-        <line x1="12" y1="15" x2="12" y2="3" />
-      </svg>
-      Download App
-    </a>
+    <div class="nav-right">
+      <button class="nav-ghost" onclick="openContact('Support')">Contact</button>
+      <a href="#" class="btn-dl" onclick="handleDownload(event)">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download App
+      </a>
+    </div>
   </nav>
 
   <!-- HERO -->
   <div class="hero-section">
     <section class="hero">
-      <div>
-        <div class="hero-badge">
-          <div class="badge-dot"></div>CRM App Built for MSO Admins
-        </div>
-        <h1>Run Your Entire Network<br /><span>From One Powerful App</span></h1>
-        <p class="hero-p">Relynk gives MSO admins complete control - manage your OLTs, VLAN assignments, and customer
-          data across all connected ISPs. GPS-tagged records, bulk imports, and full team access, all from your Android
-          phone.</p>
+      <div class="hero-copy">
+        <div class="hero-badge"><span class="pulse"></span>CRM built for MSO admins</div>
+        <h1>Run your entire network from one app</h1>
+        <p class="hero-p">Relynk gives MSO admins complete control to manage OLTs, VLAN assignments, and customer data across all connected ISPs. GPS-tagged records, bulk imports, and team access from your Android phone.</p>
         <div class="hero-actions">
           <a href="#" class="btn-hero" onclick="handleDownload(event)">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
-              <polyline points="7 10 12 15 17 10" />
-              <line x1="12" y1="15" x2="12" y2="3" />
-            </svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             Download for Android
           </a>
-          <button class="btn-ghost"
-            onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">✦ Explore
-            Features</button>
+          <button class="btn-ghost" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">
+            Explore features
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
         </div>
-        <div class="hero-trust">
+        <div class="hero-meta">
           <div class="avatars">
-            <div class="av" style="background:linear-gradient(135deg,#3b6cf5,#0ea5e9);">R</div>
-            <div class="av" style="background:linear-gradient(135deg,#0ea5e9,#06b6d4);">S</div>
-            <div class="av" style="background:linear-gradient(135deg,#16a34a,#22c55e);">M</div>
-            <div class="av" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">P</div>
+            <div class="av">R</div>
+            <div class="av">S</div>
+            <div class="av">M</div>
+            <div class="av">P</div>
           </div>
-          <div class="trust-txt">Trusted by <strong>10+ MSO operators</strong> across India</div>
+          <div class="trust-txt">Trusted by <strong>10+ MSO operators</strong><span>across India</span></div>
         </div>
       </div>
+
       <div class="hero-right">
-        <div class="phone-stack">
-          <div class="phone-back"></div>
-          <div class="phone">
-            <div class="notch">
-              <div class="n-cam"></div>
-              <div class="n-mic"></div>
+        <div class="app-window float-slow">
+          <div class="aw-top">
+            <div class="traffic"><i></i><i></i><i></i></div>
+            <div class="aw-tabs"><span class="active">Default</span><span class="dim">Only important</span></div>
+            <div class="aw-btn">New customer</div>
+          </div>
+          <div class="aw-stats">
+            <div class="aws">
+              <div class="aws-label">Total customers <span class="up">↗</span></div>
+              <div class="aws-val">2,000</div>
+              <svg class="spark" viewBox="0 0 120 28" fill="none"><path d="M2 20 C15 20 18 8 30 12 C42 16 48 14 60 12 C72 10 85 9 118 4" stroke="#111" stroke-width="1.4" stroke-linecap="round"/><circle cx="118" cy="4" r="2" fill="#111"/></svg>
             </div>
-            <div class="p-screen">
-              <div class="p-hdr">
-                <div class="p-title">OLTs</div>
-                <div class="p-ico-btn">⚙️</div>
-              </div>
-              <div class="p-search">🔍 Search OLTs...</div>
-              <div class="p-item">
-                <div class="p-ico">📡</div>
-                <div>
-                  <div class="p-name">Delhi 3030</div>
-                  <div class="p-sub">VLAN 1200–1500</div>
-                </div>
-                <div class="p-arr">›</div>
-              </div>
-              <div class="p-item">
-                <div class="p-ico">📡</div>
-                <div>
-                  <div class="p-name">Mumbai 3997</div>
-                  <div class="p-sub">VLAN 1200–1500</div>
-                </div>
-                <div class="p-arr">›</div>
-              </div>
-              <div class="p-item">
-                <div class="p-ico">📡</div>
-                <div>
-                  <div class="p-name">Bengaluru 3805</div>
-                  <div class="p-sub">VLAN 1200–1500</div>
-                </div>
-                <div class="p-arr">›</div>
-              </div>
-              <div class="p-item">
-                <div class="p-ico">📡</div>
-                <div>
-                  <div class="p-name">Hyderabad 3982</div>
-                  <div class="p-sub">VLAN 1200–1500</div>
-                </div>
-                <div class="p-arr">›</div>
-              </div>
-              <div class="p-item">
-                <div class="p-ico">📡</div>
-                <div>
-                  <div class="p-name">Chennai 3115</div>
-                  <div class="p-sub">VLAN 1200–1500</div>
-                </div>
-                <div class="p-arr">›</div>
-              </div>
-              <div class="p-fab">+</div>
+            <div class="aws">
+              <div class="aws-label">Active <span class="up">↗</span></div>
+              <div class="aws-val">1,880 <small>94%</small></div>
+              <svg class="spark" viewBox="0 0 120 28" fill="none"><path d="M2 22 C20 22 28 18 45 16 C62 14 75 16 90 10 C100 7 110 6 118 5" stroke="#111" stroke-width="1.4" stroke-linecap="round"/><circle cx="118" cy="5" r="2" fill="#111"/></svg>
             </div>
+            <div class="aws">
+              <div class="aws-label">Inactive</div>
+              <div class="aws-val">120 <small>6%</small></div>
+              <div class="meter"><div class="meter-fill" style="width:18%"></div><span class="meter-dot" style="left:18%"></span></div>
+            </div>
+          </div>
+          <div class="aw-toolbar">
+            <span class="tool"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="10" y1="18" x2="14" y2="18"/></svg> Filters</span>
+            <span class="tool dim"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Search</span>
+            <span class="tool right dim">Customize</span>
+          </div>
+          <div class="aw-table-head"><span>Name</span><span>OLT / VLAN</span><span>Status</span></div>
+          <div class="aw-row"><span class="chk"></span><span class="avatar-sm">RK</span><span class="rname">Rajesh Kumar <em>Airnet · VLAN 1247</em></span><span class="pill green">Active</span></div>
+          <div class="aw-row"><span class="chk"></span><span class="avatar-sm">SP</span><span class="rname">Suresh Patel <em>Delhi 3030 · VLAN 231</em></span><span class="pill blue">New</span></div>
+          <div class="aw-row selected"><span class="chk on"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="avatar-sm">AM</span><span class="rname">Amit Mehta <em>Mumbai 3997 · VLAN 1302</em></span><span class="pill gray">Non-targeted</span></div>
+          <div class="aw-row"><span class="chk"></span><span class="avatar-sm">PV</span><span class="rname">Priya Verma <em>TerraPulse · VLAN 845</em></span><span class="pill green">Active</span></div>
+          <div class="aw-foot">
+            <div class="sel-bar"><span class="x">✕</span> Selected: 5 <span class="divline"></span> Export <span class="divline"></span> Archive</div>
+          </div>
+        </div>
+        <div class="mini-card mc1 float-med">
+          <div class="mini-ico">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div><div class="mini-t">GPS captured</div><div class="mini-s">30.7046° N · 76.7179° E</div></div>
+          <span class="pill green">Saved</span>
+        </div>
+        <div class="mini-card mc2 float-fast">
+          <div class="mini-ico">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <div><div class="mini-t">Excel import</div><div class="mini-s">248 records · validated</div></div>
+          <span class="pill blue">Done</span>
+        </div>
+      </div>
+    </section>
+    <div class="logo-strip reveal">
+      <span>OLT MANAGEMENT</span><i></i><span>ISP TAGGING</span><i></i><span>GPS GEO-TAG</span><i></i><span>EXCEL IMPORT</span><i></i><span>ROLE ACCESS</span><i></i><span>INACTIVE TRACKING</span>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section class="section" id="features">
+    <div class="reveal sec-head">
+      <div class="section-tag"><span></span>Everything you need</div>
+      <h2 class="section-title">Built for MSO admins,<br />end to end</h2>
+      <p class="section-sub">All the tools an MSO needs to manage OLTs, track customer data across connected ISPs, and run your field team from one Android app.</p>
+    </div>
+    <div class="fg">
+      <div class="fc reveal">
+        <div class="fi"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.9 19.1a10 10 0 0 1 0-14.2M7.8 16.2a6 6 0 0 1 0-8.4M16.2 7.8a6 6 0 0 1 0 8.4M19.1 4.9a10 10 0 0 1 0 14.2"/><circle cx="12" cy="12" r="2"/></svg></div>
+        <div class="ft">OLT management</div>
+        <div class="fd">Add, search, and manage all your Optical Line Terminals. Assign VLAN ranges per OLT and monitor every node from one screen.</div>
+      </div>
+      <div class="fc reveal d1">
+        <div class="fi"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M16 6h.01M12 6h.01M8 10h.01M16 10h.01M12 10h.01M8 14h.01M16 14h.01M12 14h.01"/></svg></div>
+        <div class="ft">ISP-wise customer database</div>
+        <div class="fd">Every customer tagged to their ISP. Rich profiles with VLAN, optical range, phone, address, and GPS, all managed centrally.</div>
+      </div>
+      <div class="fc reveal d2">
+        <div class="fi"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="ft">GPS geo-tagging</div>
+        <div class="fd">One-tap GPS capture at onboarding. Instant latitude and longitude for field visits, fault tracking, and installs.</div>
+      </div>
+      <div class="fc reveal">
+        <div class="fi"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="ft">Inactive customer tracking</div>
+        <div class="fd">Auto-identify inactive customers across your network. Add individually or bulk-import from Excel for reactivation.</div>
+      </div>
+      <div class="fc reveal d1">
+        <div class="fi"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="ft">User and role management</div>
+        <div class="fd">Create admin and employee accounts for your team. Control what each user can view or edit without any complexity.</div>
+      </div>
+      <div class="fc reveal d2">
+        <div class="fi"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+        <div class="ft">Excel bulk import</div>
+        <div class="fd">Upload hundreds of records at once via Excel. Built-in validation ensures clean, error-free data in minutes.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
+  <section class="section-wrap">
+    <section class="section" id="overview">
+      <div class="reveal sec-head center">
+        <div class="section-tag"><span></span>Live overview</div>
+        <h2 class="section-title">Your network at a glance</h2>
+        <p class="section-sub center-p">Live counts of customers, inactive connections, and active OLTs, always up to date.</p>
+      </div>
+      <div class="dash-wrap reveal">
+        <div class="dash-bar">
+          <div class="traffic"><i></i><i></i><i></i></div>
+          <span class="dash-title">Relynk - MSO admin panel</span>
+          <span class="dash-right"><span class="pill green">All systems normal</span></span>
+        </div>
+        <div class="dg">
+          <div class="mc">
+            <div class="mc-top"><span class="mc-label">Total customers</span><span class="up">↗</span></div>
+            <div class="mc-v" data-count="2000" data-suffix="">0</div>
+            <div class="mc-sub">Customers on network</div>
+            <svg class="spark lg" viewBox="0 0 200 36" fill="none"><path d="M2 28 C30 28 40 12 70 16 C100 20 120 16 198 6" stroke="#111" stroke-width="1.5" stroke-linecap="round"/><circle cx="198" cy="6" r="2.5" fill="#111"/></svg>
+          </div>
+          <div class="mc">
+            <div class="mc-top"><span class="mc-label">Inactive</span><span class="pill gray">6%</span></div>
+            <div class="mc-v" data-count="120" data-suffix="">0</div>
+            <div class="mc-sub">Need reactivation</div>
+            <div class="meter lg"><div class="meter-fill" style="width:22%"></div><span class="meter-dot" style="left:22%"></span></div>
+            <div class="bar-scale"></div>
+          </div>
+          <div class="mc">
+            <div class="mc-top"><span class="mc-label">Active OLTs</span><span class="pill green">Online</span></div>
+            <div class="mc-v" data-count="15" data-suffix="">0</div>
+            <div class="mc-sub">Nodes monitored</div>
+            <div class="olt-dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div>
           </div>
         </div>
       </div>
     </section>
-  </div>
-
-  <hr class="div" />
-
-  <!-- FEATURES -->
-  <section class="section" id="features">
-    <div class="reveal" style="text-align:center;max-width:540px;margin:0 auto 44px;">
-      <div class="section-tag">Everything You Need</div>
-      <h2 class="section-title">Built for MSO Admins,<br />End to End</h2>
-      <p class="section-sub" style="margin:0 auto;">All the tools an MSO needs - manage your OLTs, track customer data
-        across connected ISPs, and run your field team from one Android app.</p>
-    </div>
-    <div class="fg">
-      <div class="fc reveal">
-        <div class="fi fi-b">📡</div>
-        <div class="ft">OLT Management</div>
-        <div class="fd">Add, search, and manage all your Optical Line Terminals. Assign VLAN ranges per OLT and monitor
-          every node on your MSO network from one screen.</div>
-      </div>
-      <div class="fc reveal d1">
-        <div class="fi fi-c">🏢</div>
-        <div class="ft">ISP-wise Customer Database</div>
-        <div class="fd">Every customer on your network is tagged to their ISP. Rich profiles with VLAN, optical range,
-          phone, address, and GPS - all stored and managed centrally by you.</div>
-      </div>
-      <div class="fc reveal d2">
-        <div class="fi fi-o">📍</div>
-        <div class="ft">GPS Geo-Tagging</div>
-        <div class="fd">One-tap GPS capture for every customer at onboarding. Instant latitude/longitude for field
-          visits, fault tracking, and new connection installations.</div>
-      </div>
-      <div class="fc reveal">
-        <div class="fi fi-r">⚠️</div>
-        <div class="ft">Inactive Customer Tracking</div>
-        <div class="fd">Auto-identify inactive customers across your entire network. Add them individually or
-          bulk-import from Excel to run targeted reactivation campaigns.</div>
-      </div>
-      <div class="fc reveal d1">
-        <div class="fi fi-p">👤</div>
-        <div class="ft">User & Role Management</div>
-        <div class="fd">Create admin and employee accounts for your MSO team. Assign roles and control what each user
-          can view or edit within the app.</div>
-      </div>
-      <div class="fc reveal d2">
-        <div class="fi fi-g">📤</div>
-        <div class="ft">Excel Bulk Import</div>
-        <div class="fd">Upload hundreds of customer records at once via Excel. Built-in validation ensures clean,
-          error-free data - saving hours of manual work.</div>
-      </div>
-    </div>
   </section>
-
-  <hr class="div" />
-
-  <!-- DASHBOARD -->
-  <section class="section stripe">
-    <div class="reveal" style="text-align:center;max-width:540px;margin:0 auto 36px;">
-      <div class="section-tag">Live Overview</div>
-      <h2 class="section-title">Your Network at a Glance</h2>
-      <p class="section-sub" style="margin:0 auto;">Live counts of customers, inactive connections, and active OLTs
-        on your MSO network - always up to date.</p>
-    </div>
-    <div class="dash-wrap reveal">
-      <div class="dash-bar">
-        <div class="db-dot" style="background:#ef4444;"></div>
-        <div class="db-dot" style="background:#eab308;"></div>
-        <div class="db-dot" style="background:#22c55e;"></div>
-        <span style="font-size:11.5px;color:var(--text-muted);margin-left:8px;letter-spacing:-0.1px;">Relynk - MSO Admin
-          Panel</span>
-      </div>
-      <div class="dg">
-        <div class="mc">
-          <div class="mc-i">👥</div>
-          <div class="mc-v" data-count="2000" data-suffix="">0</div>
-          <div class="mc-l">Customers on Network</div>
-          <!-- <div class="mc-c cup">↑ 23 this month</div> -->
-        </div>
-        <div class="mc">
-          <div class="mc-i">⚠️</div>
-          <div class="mc-v" data-count="120" data-suffix="">0</div>
-          <div class="mc-l">Inactive Customers</div>
-          <!-- <div class="mc-c cdn">↑ 12 this week</div> -->
-        </div>
-        <div class="mc">
-          <div class="mc-i">📡</div>
-          <div class="mc-v" data-count="15" data-suffix="">0</div>
-          <div class="mc-l">Your Active OLTs</div>
-          <!-- <div class="mc-c cup">All online</div> -->
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="div" />
 
   <!-- OLT -->
   <section class="section" id="olt">
     <div class="split reveal">
       <div class="mk">
         <div class="mk-bar">
-          <div class="mk-title">OLTs</div>
-          <div style="display:flex;gap:8px;align-items:center;">
-            <div
-              style="width:28px;height:28px;background:white;border:1px solid var(--border);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;">
-              ⚙️</div>
-            <div class="mk-fab">+</div>
+          <div class="mk-title">OLTs <span class="count">6</span></div>
+          <div class="mk-actions">
+            <span class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
+            <span class="mk-fab">+</span>
           </div>
         </div>
-        <div class="mk-search">🔍 Search OLTs...</div>
-        <div class="mk-item">
-          <div class="mk-ico">📡</div>
-          <div>
-            <div class="mk-name">Delhi 3030</div>
-            <div class="mk-sub">VLAN Range: 100–400</div>
-          </div>
-          <div class="mk-arr">›</div>
-        </div>
-        <div class="mk-item">
-          <div class="mk-ico">📡</div>
-          <div>
-            <div class="mk-name">Mumbai 3997</div>
-            <div class="mk-sub">VLAN Range: 1200–1500</div>
-          </div>
-          <div class="mk-arr">›</div>
-        </div>
-        <div class="mk-item">
-          <div class="mk-ico">📡</div>
-          <div>
-            <div class="mk-name">Bengaluru 3247</div>
-            <div class="mk-sub">VLAN Range: 200–800</div>
-          </div>
-          <div class="mk-arr">›</div>
-        </div>
-        <div class="mk-item">
-          <div class="mk-ico">📡</div>
-          <div>
-            <div class="mk-name">Hyderabad 3115</div>
-            <div class="mk-sub">VLAN Range: 1000–1400</div>
-          </div>
-          <div class="mk-arr">›</div>
-        </div>
-        <div class="mk-item">
-          <div class="mk-ico">📡</div>
-          <div>
-            <div class="mk-name">Chennai 3982</div>
-            <div class="mk-sub">VLAN Range: 120–250</div>
-          </div>
-          <div class="mk-arr">›</div>
-        </div>
-        <div class="mk-item">
-          <div class="mk-ico">📡</div>
-          <div>
-            <div class="mk-name">Kolkata 3021</div>
-            <div class="mk-sub">VLAN Range: 2000–2500</div>
-          </div>
-          <div class="mk-arr">›</div>
-        </div>
+        <div class="mk-search"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Search OLTs...</div>
+        <div class="mk-item"><div class="mk-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4.9 19.1a10 10 0 0 1 0-14.2M7.8 16.2a6 6 0 0 1 0-8.4M16.2 7.8a6 6 0 0 1 0 8.4M19.1 4.9a10 10 0 0 1 0 14.2"/><circle cx="12" cy="12" r="2"/></svg></div><div><div class="mk-name">Delhi 3030</div><div class="mk-sub">VLAN 100-400</div></div><span class="pill green">Active</span></div>
+        <div class="mk-item"><div class="mk-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4.9 19.1a10 10 0 0 1 0-14.2M7.8 16.2a6 6 0 0 1 0-8.4M16.2 7.8a6 6 0 0 1 0 8.4M19.1 4.9a10 10 0 0 1 0 14.2"/><circle cx="12" cy="12" r="2"/></svg></div><div><div class="mk-name">Mumbai 3997</div><div class="mk-sub">VLAN 1200-1500</div></div><span class="pill green">Active</span></div>
+        <div class="mk-item"><div class="mk-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4.9 19.1a10 10 0 0 1 0-14.2M7.8 16.2a6 6 0 0 1 0-8.4M16.2 7.8a6 6 0 0 1 0 8.4M19.1 4.9a10 10 0 0 1 0 14.2"/><circle cx="12" cy="12" r="2"/></svg></div><div><div class="mk-name">Bengaluru 3247</div><div class="mk-sub">VLAN 200-800</div></div><span class="pill blue">New</span></div>
+        <div class="mk-item"><div class="mk-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4.9 19.1a10 10 0 0 1 0-14.2M7.8 16.2a6 6 0 0 1 0-8.4M16.2 7.8a6 6 0 0 1 0 8.4M19.1 4.9a10 10 0 0 1 0 14.2"/><circle cx="12" cy="12" r="2"/></svg></div><div><div class="mk-name">Hyderabad 3115</div><div class="mk-sub">VLAN 1000-1400</div></div><span class="pill green">Active</span></div>
+        <div class="mk-item"><div class="mk-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4.9 19.1a10 10 0 0 1 0-14.2M7.8 16.2a6 6 0 0 1 0-8.4M16.2 7.8a6 6 0 0 1 0 8.4M19.1 4.9a10 10 0 0 1 0 14.2"/><circle cx="12" cy="12" r="2"/></svg></div><div><div class="mk-name">Chennai 3982</div><div class="mk-sub">VLAN 120-250</div></div><span class="pill green">Active</span></div>
         <div style="height:12px;"></div>
       </div>
       <div class="si">
-        <div class="section-tag">OLT Management</div>
-        <h3>Full Control Over Your OLTs & VLAN Ranges</h3>
-        <p>All your Optical Line Terminals in one place. Set VLAN ranges per OLT, search by name, and drill into any
-          OLT to see every customer connected to it - along with which ISP they are served through.</p>
+        <div class="section-tag"><span></span>OLT management</div>
+        <h3>Full control over OLTs and VLAN ranges</h3>
+        <p>All your Optical Line Terminals in one place. Set VLAN ranges per OLT, search by name, and drill into any OLT to see every connected customer and their ISP.</p>
         <div class="bullets">
-          <div class="bul">
-            <div class="bd"></div>Add OLTs with name and VLAN range
-          </div>
-          <div class="bul">
-            <div class="bd"></div>Instant search across all your OLT nodes
-          </div>
-          <div class="bul">
-            <div class="bd"></div>View customer count per OLT
-          </div>
-          <div class="bul">
-            <div class="bd"></div>Quick settings via gear icon
-          </div>
-          <div class="bul">
-            <div class="bd"></div>One-tap add with floating + button
-          </div>
+          <div class="bul"><span class="check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Add OLTs with name and VLAN range</div>
+          <div class="bul"><span class="check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Instant search across all nodes</div>
+          <div class="bul"><span class="check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Customer count per OLT</div>
+          <div class="bul"><span class="check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Quick settings and one-tap add</div>
         </div>
       </div>
     </div>
   </section>
-
-  <hr class="div" />
 
   <!-- CUSTOMERS -->
-  <section class="section stripe" id="customers">
-    <div class="split reveal">
-      <div class="si">
-        <div class="section-tag">Customer Management</div>
-        <h3>All Customer Data, Organized ISP-wise</h3>
-        <p>As an MSO, you manage all end-customer records on your network. Each customer is tagged to the ISP they are
-          served through, and mapped to an OLT and VLAN - giving you complete visibility from one screen.</p>
-        <div class="bullets">
-          <div class="bul">
-            <div class="bd"></div>Each customer tagged to their ISP and OLT
+  <section class="section-wrap" id="customers">
+    <section class="section">
+      <div class="split reveal">
+        <div class="si">
+          <div class="section-tag"><span></span>Customer management</div>
+          <h3>All customer data, organized ISP-wise</h3>
+          <p>As an MSO you manage every end-customer on your network. Each record is tagged to its ISP and mapped to an OLT and VLAN, giving you complete visibility from one screen.</p>
+          <div class="bullets">
+            <div class="bul"><span class="check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Each customer tagged to ISP and OLT</div>
+            <div class="bul"><span class="check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>VLAN within the OLT range</div>
+            <div class="bul"><span class="check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>One-tap GPS capture</div>
+            <div class="bul"><span class="check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Bulk import via Excel</div>
           </div>
-          <div class="bul">
-            <div class="bd"></div>Assign VLAN numbers within the OLT's range
+          <div class="stat-row">
+            <div><strong>2,000+</strong><span>records managed</span></div>
+            <div><strong>99.2%</strong><span>data accuracy</span></div>
+            <div><strong>30 sec</strong><span>avg. onboarding</span></div>
           </div>
-          <div class="bul">
-            <div class="bd"></div>Auto-capture GPS coordinates with one tap
+        </div>
+        <div class="fm">
+          <div class="fh">
+            <div class="fh-ico">RK</div>
+            <div><h4>Add new customer</h4><p>Tag to ISP · Assign OLT and VLAN · Capture GPS</p></div>
+            <span class="pill green">Active</span>
           </div>
-          <div class="bul">
-            <div class="bd"></div>Store mobile and landline numbers
+          <div class="ff"><span class="flabel">ISP</span><span class="fv">Airnet Broadband</span></div>
+          <div class="ff"><span class="flabel">Name</span><span class="fv">Rajesh Kumar</span></div>
+          <div class="ff"><span class="flabel">VLAN</span><span class="fv">1247</span><span class="pill gray">In range</span></div>
+          <div class="ff"><span class="flabel">Optical</span><span class="fv">-22.5 to -18.3 dBm</span></div>
+          <div class="ff"><span class="flabel">Phone</span><span class="fv">+91 98765 43210</span></div>
+          <div class="ff"><span class="flabel">Address</span><span class="fv">Street No. 4, Sector 7</span></div>
+          <div class="gps-row">
+            <div class="ff grow"><span class="flabel">GPS</span><span class="fv">30.7046° N, 76.7179° E</span></div>
+            <div class="gps-btn">Get location</div>
           </div>
-          <div class="bul">
-            <div class="bd"></div>Full address with location details
-          </div>
-          <div class="bul">
-            <div class="bd"></div>Bulk import hundreds of records via Excel
-          </div>
+          <div class="fsub">Save customer</div>
         </div>
       </div>
-      <div class="fm">
-        <div class="fh">
-          <div class="fh-ico" style="background:var(--orange-pale);">👤</div>
-          <div>
-            <h4>Add New Customer</h4>
-            <p>Tag to ISP · Assign OLT & VLAN · Capture GPS</p>
-          </div>
-        </div>
-        <div class="ff">
-          <div class="ff-ico" style="background:var(--cyan-pale);">🏢</div><span class="fv">ISP: Airnet Broadband</span>
-        </div>
-        <div class="ff">
-          <div class="ff-ico" style="background:var(--navy-pale);">👤</div><span class="fv">Rajesh Kumar</span>
-        </div>
-        <div class="ff">
-          <div class="ff-ico" style="background:var(--purple-pale);">#</div><span class="fv">VLAN 1247</span>
-        </div>
-        <div class="ff">
-          <div class="ff-ico" style="background:#e0f2fe;">〰</div><span class="fv">–22.5 to –18.3 dBm</span>
-        </div>
-        <div class="ff">
-          <div class="ff-ico" style="background:var(--green-pale);">📞</div><span class="fv">+91 98765 43210</span>
-        </div>
-        <div class="ff">
-          <div class="ff-ico" style="background:var(--red-pale);">📍</div><span class="fv">Street No. 4, Sector 7</span>
-        </div>
-        <div class="gps-row">
-          <div class="ff" style="flex:1;margin-bottom:0;">
-            <div class="ff-ico" style="background:var(--orange-pale);">🎯</div><span>GPS Coordinates</span>
-          </div>
-          <div class="gps-btn">🎯 Get Location</div>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:7px;">
-          <div class="ff" style="margin-bottom:0;"><span class="fv">30.7046° N</span></div>
-          <div class="ff" style="margin-bottom:0;"><span class="fv">76.7179° E</span></div>
-        </div>
-        <div class="fsub">Save Customer</div>
-      </div>
-    </div>
+    </section>
   </section>
-
-  <hr class="div" />
 
   <!-- SETTINGS -->
   <section class="section">
     <div class="split reveal">
       <div class="sm">
-        <div style="font-family:var(--font);font-size:15px;font-weight:700;margin-bottom:14px;letter-spacing:-0.3px;">⚙️
-          Admin Settings</div>
+        <div class="sm-head">Admin settings <span class="pill gray">MSO</span></div>
         <div class="ss-row">
-          <div class="ss-card">
-            <div class="ss-ico" style="background:var(--navy-pale);">👥</div>
-            <div>
-              <div class="ss-v">1,682</div>
-              <div class="ss-l">Customers on Network</div>
-            </div>
-          </div>
-          <div class="ss-card">
-            <div class="ss-ico" style="background:var(--orange-pale);">⚠️</div>
-            <div>
-              <div class="ss-v">125</div>
-              <div class="ss-l">Inactive</div>
-            </div>
-          </div>
+          <div class="ss-card"><div><div class="ss-v">1,682</div><div class="ss-l">Customers on network</div></div><span class="up">↗</span></div>
+          <div class="ss-card"><div><div class="ss-v">125</div><div class="ss-l">Inactive</div></div><span class="pill gray">7%</span></div>
         </div>
-        <div class="sg-t">Data Management</div>
+        <div class="sg-t">Data management</div>
         <div class="sg-s">Upload and manage customer data</div>
-        <div class="s-item">
-          <div class="s-ico" style="background:var(--navy-pale);">📤</div>
-          <div>
-            <div class="s-n">Upload Customers</div>
-            <div class="s-s">Import from Excel</div>
-          </div>
-          <div class="s-a">›</div>
-        </div>
-        <div class="s-item">
-          <div class="s-ico" style="background:var(--orange-pale);">👤</div>
-          <div>
-            <div class="s-n">Manage Inactive Customers</div>
-            <div class="s-s">Single or bulk Excel import</div>
-          </div>
-          <div class="s-a">›</div>
-        </div>
-        <div style="height:7px;"></div>
-        <div class="sg-t">Customer Management</div>
-        <div class="sg-s">View and manage customer records</div>
-        <div class="s-item">
-          <div class="s-ico" style="background:var(--purple-pale);">🚫</div>
-          <div>
-            <div class="s-n">Inactive Customers</div>
-            <div class="s-s">View and reactivate inactive list</div>
-          </div>
-          <div class="s-a">›</div>
-        </div>
-        <div class="s-item">
-          <div class="s-ico" style="background:var(--green-pale);">🔐</div>
-          <div>
-            <div class="s-n">Account Management</div>
-            <div class="s-s">Create and manage team users</div>
-          </div>
-          <div class="s-a">›</div>
-        </div>
+        <div class="s-item"><div class="s-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div><div><div class="s-n">Upload customers</div><div class="s-s">Import from Excel</div></div><div class="s-a">›</div></div>
+        <div class="s-item"><div class="s-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div><div class="s-n">Manage inactive customers</div><div class="s-s">Single or bulk import</div></div><div class="s-a">›</div></div>
+        <div style="height:10px;"></div>
+        <div class="sg-t">Customer management</div>
+        <div class="sg-s">View and manage records</div>
+        <div class="s-item"><div class="s-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></svg></div><div><div class="s-n">Inactive customers</div><div class="s-s">View and reactivate list</div></div><div class="s-a">›</div></div>
+        <div class="s-item"><div class="s-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><div><div class="s-n">Account management</div><div class="s-s">Create and manage team users</div></div><div class="s-a">›</div></div>
       </div>
       <div class="si">
-        <div class="section-tag">Admin Settings</div>
-        <h3>Everything Under One Settings Screen</h3>
-        <p>See live stats for your entire network, manage customer data uploads, track inactive connections, and control
-          team access - all from a single clean settings screen.</p>
+        <div class="section-tag"><span></span>Admin settings</div>
+        <h3>Everything under one settings screen</h3>
+          <p>Live stats for your entire network, data uploads, inactive tracking, and team access from a single clean screen.</p>
         <div class="bullets">
-          <div class="bul">
-            <div class="bd"></div>Live stats: total & inactive customers on network
-          </div>
-          <div class="bul">
-            <div class="bd"></div>Excel bulk import with built-in validation
-          </div>
-          <div class="bul">
-            <div class="bd"></div>Inactive customer reactivation tools
-          </div>
-          <div class="bul">
-            <div class="bd"></div>Role-based user creation - Admin or Employee
-          </div>
-          <div class="bul">
-            <div class="bd"></div>Secure account management for your team
-          </div>
+          <div class="bul"><span class="check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Live stats: total and inactive customers</div>
+          <div class="bul"><span class="check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Excel bulk import with validation</div>
+          <div class="bul"><span class="check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Inactive reactivation tools</div>
+            <div class="bul"><span class="check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Role-based access for Admin or Employee</div>
         </div>
       </div>
     </div>
   </section>
-
-  <hr class="div" />
 
   <!-- ACCOUNT MANAGEMENT -->
-  <section class="section stripe">
-    <div class="split reveal">
-      <div class="si">
-        <div class="section-tag">Account Management</div>
-        <h3>Create & Manage Your Team Accounts</h3>
-        <p>Add team members and assign roles. Control who can view or edit customer records, OLT data, and network
-          settings - keeping your operations secure and organized.</p>
-        <div class="bullets">
-          <div class="bul">
-            <div class="bd"></div>Create team accounts instantly
+  <section class="section-wrap">
+    <section class="section">
+      <div class="split reveal">
+        <div class="si">
+          <div class="section-tag"><span></span>Account management</div>
+          <h3>Create and manage team accounts</h3>
+          <p>Add members and assign roles. Control who can view or edit records, OLT data, and settings in a secure and organized way.</p>
+          <div class="bullets">
+            <div class="bul"><span class="check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Create team accounts instantly</div>
+            <div class="bul"><span class="check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Employee or Admin role per user</div>
+            <div class="bul"><span class="check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Search by name or email</div>
           </div>
-          <div class="bul">
-            <div class="bd"></div>Assign Employee or Admin role to each user
+        </div>
+        <div class="fm">
+          <div class="fh">
+            <div class="fh-ico dark">SM</div>
+            <div><h4>Create new user</h4><p>Add a member to your MSO account</p></div>
           </div>
-          <div class="bul">
-            <div class="bd"></div>Search users by name or email
-          </div>
-          <div class="bul">
-            <div class="bd"></div>Simple access control, no complexity
+          <div class="ff"><span class="flabel">Name</span><span class="fv">Suresh Mehta</span></div>
+          <div class="ff"><span class="flabel">Email</span><span class="fv">suresh@relynk.app</span></div>
+          <div class="ff"><span class="flabel">Phone</span><span class="fv">+91 99887 76655</span></div>
+          <div class="ff"><span class="flabel">Role</span><span class="fv">Employee</span><span class="chev">›</span></div>
+          <div class="fsub">Create user</div>
+          <div class="manage">
+            <div class="manage-h">Manage users <span>· 3 registered</span></div>
+            <div class="mk-search" style="margin:0;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg> Search users...</div>
+            <div class="u-row"><span class="avatar-sm">SM</span><span class="rname">Suresh Mehta <em>Employee</em></span><span class="pill green">Active</span></div>
+            <div class="u-row"><span class="avatar-sm">PK</span><span class="rname">Priya Kaur <em>Admin</em></span><span class="pill blue">Admin</span></div>
           </div>
         </div>
       </div>
-      <div class="fm">
-        <div class="fh">
-          <div class="fh-ico" style="background:var(--navy-pale);">➕</div>
-          <div>
-            <h4>Create New User</h4>
-            <p>Add a team member to your MSO account</p>
-          </div>
-        </div>
-        <div class="ff">
-          <div class="ff-ico" style="background:var(--navy-pale);">🙍</div><span class="fv">Suresh Mehta</span>
-        </div>
-        <div class="ff">
-          <div class="ff-ico" style="background:var(--navy-pale);">✉️</div><span class="fv">suresh@relynk.app</span>
-        </div>
-        <div class="ff">
-          <div class="ff-ico" style="background:var(--navy-pale);">📞</div><span class="fv">+91 99887 76655</span>
-        </div>
-        <div class="ff">
-          <div class="ff-ico" style="background:var(--navy-pale);">🔒</div><span
-            style="color:var(--text-muted);">••••••••</span>
-        </div>
-        <div class="ff" style="justify-content:space-between;">
-          <div style="display:flex;align-items:center;gap:9px;">
-            <div class="ff-ico" style="background:var(--bg);">💼</div><span class="fv">Employee</span>
-          </div>
-          <span style="color:var(--text-muted);">▼</span>
-        </div>
-        <div class="fsub">Create User</div>
-        <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border);">
-          <div style="font-size:12.5px;font-weight:700;margin-bottom:7px;letter-spacing:-0.2px;">👥 Manage Users <span
-              style="color:var(--text-muted);font-weight:400;font-size:11px;">· 3 users registered</span></div>
-          <div class="mk-search" style="margin:0;">🔍 Search users by email or name...</div>
-        </div>
-      </div>
-    </div>
+    </section>
   </section>
-
-  <hr class="div" />
 
   <!-- PRICING -->
   <section class="section" id="pricing">
-    <div class="reveal" style="text-align:center;max-width:480px;margin:0 auto 44px;">
-      <div class="section-tag">Pricing</div>
-      <h2 class="section-title">Simple, Affordable Plans</h2>
-      <p class="section-sub" style="margin:0 auto;">One flat price for your entire MSO network. No hidden fees, no per-ISP charges.</p>
+    <div class="reveal sec-head center">
+      <div class="section-tag"><span></span>Pricing</div>
+      <h2 class="section-title">Simple, affordable plans</h2>
+      <p class="section-sub center-p">One flat price for your entire MSO network. No hidden fees, no per-ISP charges.</p>
     </div>
     <div class="pg reveal">
       <div class="pc">
-        <div class="pp">6 Months</div>
+        <div class="pp">6 months</div>
         <div class="pv"><sup>₹</sup>599</div>
-        <div class="pperiod">one-time · valid 6 months</div>
-        <div class="psave">₹100/month effective</div>
+        <div class="pperiod">One-time · valid 6 months</div>
+        <div class="psave">₹100 / month effective</div>
         <div class="pf">
-          <div class="pf-row"><span class="ck">✓</span> Unlimited OLT management</div>
-          <div class="pf-row"><span class="ck">✓</span> Unlimited customer records</div>
-          <div class="pf-row"><span class="ck">✓</span> ISP-wise customer tagging</div>
-          <div class="pf-row"><span class="ck">✓</span> GPS geo-tagging</div>
-          <div class="pf-row"><span class="ck">✓</span> Excel bulk import</div>
-          <div class="pf-row"><span class="ck">✓</span> Inactive customer tracking</div>
-          <div class="pf-row"><span class="ck">✓</span> User & role management</div>
-          <div class="pf-row"><span class="ck">✓</span> Email support</div>
+          <div class="pf-row"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Unlimited OLT management</div>
+          <div class="pf-row"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Unlimited customer records</div>
+          <div class="pf-row"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> ISP-wise tagging + GPS</div>
+          <div class="pf-row"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Excel bulk import</div>
+          <div class="pf-row"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Inactive tracking + roles</div>
         </div>
-        <button class="pb pb-o" onclick="openContact('6-Month Plan — ₹599')">Get 6-Month Plan</button>
+        <button class="pb pb-o" onclick="openContact('6-Month Plan - ₹599')">Get 6-month plan</button>
       </div>
       <div class="pc best">
-        <div class="best-lbl">Best Value · Save 16%</div>
-        <div class="pp">1 Year</div>
+        <div class="best-lbl">Best value · Save 16%</div>
+        <div class="pp">1 year</div>
         <div class="pv"><sup>₹</sup>999</div>
-        <div class="pperiod">one-time · valid 12 months</div>
-        <div class="psave">₹83/month effective - lowest price</div>
+        <div class="pperiod">One-time · valid 12 months</div>
+        <div class="psave dark">₹83 / month · lowest price</div>
         <div class="pf">
-          <div class="pf-row"><span class="ck">✓</span> Everything in 6-Month plan</div>
-          <div class="pf-row"><span class="ck">✓</span> Priority support</div>
-          <div class="pf-row"><span class="ck">✓</span> Early access to new features</div>
-          <div class="pf-row"><span class="ck">✓</span> Free onboarding assistance</div>
-          <div class="pf-row"><span class="ck">✓</span> Data backup & export</div>
-          <div class="pf-row"><span class="ck">✓</span> Unlimited team accounts</div>
-          <div class="pf-row"><span class="ck">✓</span> WhatsApp support</div>
+          <div class="pf-row"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Everything in 6-month plan</div>
+          <div class="pf-row"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Priority + WhatsApp support</div>
+          <div class="pf-row"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Free onboarding assistance</div>
+          <div class="pf-row"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Data backup and export</div>
+          <div class="pf-row"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Unlimited team accounts</div>
         </div>
-        <button class="pb pb-f" onclick="openContact('1-Year Plan — ₹999')">Get 1-Year Plan</button>
+        <button class="pb pb-f" onclick="openContact('1-Year Plan - ₹999')">Get 1-year plan</button>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <div class="cta">
-    <h2>Ready to Take Control of<br />Your MSO Network?</h2>
-    <p>Download Relynk on Android and manage your OLTs, customers, and team - all from one app.</p>
-    <div class="cta-acts">
-      <a href="#" class="btn-cw" onclick="handleDownload(event)">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-          stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
-          <polyline points="7 10 12 15 17 10" />
-          <line x1="12" y1="15" x2="12" y2="3" />
-        </svg>
-        Download for Android
-      </a>
-      <button class="btn-co"
-        onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">View Pricing</button>
+  <section class="section cta-wrap">
+    <div class="cta reveal">
+      <div class="cta-tag">Get started in minutes</div>
+      <h2>Ready to take control of<br />your MSO network?</h2>
+      <p>Download Relynk on Android and manage OLTs, customers, and team, all from one app.</p>
+      <div class="cta-acts">
+        <a href="#" class="btn-cw" onclick="handleDownload(event)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download for Android
+        </a>
+        <button class="btn-co" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">View pricing</button>
+      </div>
+      <div class="cta-meta"><span class="cdot"></span> No per-ISP fees <span class="cdot"></span> Excel import included <span class="cdot"></span> Support in Hindi + English</div>
     </div>
-  </div>
+  </section>
 
- <!-- FOOTER -->
-<footer>
-  <div class="fl">Relynk</div>
-  <div class="flinks">
-    <a href="#features">Features</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#" onclick="openContact('Support'); return false;">Support</a>
-    <a href="https://relynk.in/privacy-policy" target="_blank">Privacy Policy</a>
-    <a href="https://relynk.in/term-of-service" target="_blank">Terms of Service</a>
-  </div>
-  <div class="fc2">© 2026 Relynk. All rights reserved.</div>
-</footer>
+  <!-- FOOTER -->
+  <footer>
+    <div class="f-in">
+      <div class="fl"><img class="logo-img sm" src="./icon.png" alt="Relynk logo" /> Relynk <span class="fsub2">· MSO CRM</span></div>
+      <div class="flinks">
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#" onclick="openContact('Support'); return false;">Support</a>
+        <a href="https://relynk.in/privacy-policy" target="_blank">Privacy</a>
+        <a href="https://relynk.in/term-of-service" target="_blank">Terms</a>
+      </div>
+      <div class="fc2">© 2026 Relynk. All rights reserved.</div>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>
