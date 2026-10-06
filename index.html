@@ -88,6 +88,10 @@
     </div>
     <div class="nav-right">
       <button class="nav-ghost" onclick="openContact('Support')">Contact</button>
+      <a href="https://crm.relynk.in" target="_blank" class="btn-webapp">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        Web App
+      </a>
       <a href="#" class="btn-dl" onclick="handleDownload(event)">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Download App
@@ -99,7 +103,6 @@
   <div class="hero-section">
     <section class="hero">
       <div class="hero-copy">
-        <div class="hero-badge"><span class="pulse"></span>CRM built for MSO admins</div>
         <h1>Run your entire network from one app</h1>
         <p class="hero-p">Relynk gives MSO admins complete control to manage OLTs, VLAN assignments, and customer data across all connected ISPs. GPS-tagged records, bulk imports, and team access from your Android phone.</p>
         <div class="hero-actions">
@@ -107,10 +110,11 @@
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             Download for Android
           </a>
-          <button class="btn-ghost" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">
-            Explore features
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </button>
+          <a href="https://crm.relynk.in" target="_blank" class="btn-webapp-hero">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            Open Web App
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
         </div>
         <div class="hero-meta">
           <div class="avatars">
@@ -177,8 +181,37 @@
         </div>
       </div>
     </section>
-    <div class="logo-strip reveal">
-      <span>OLT MANAGEMENT</span><i></i><span>ISP TAGGING</span><i></i><span>GPS GEO-TAG</span><i></i><span>EXCEL IMPORT</span><i></i><span>ROLE ACCESS</span><i></i><span>INACTIVE TRACKING</span>
+    <div class="marquee-wrap reveal">
+      <div class="marquee-track">
+        <div class="marquee-content">
+          <span>OLT MANAGEMENT</span><i></i>
+          <span>ISP TAGGING</span><i></i>
+          <span>GPS GEO-TAG</span><i></i>
+          <span>EXCEL IMPORT</span><i></i>
+          <span>ROLE ACCESS</span><i></i>
+          <span>INACTIVE TRACKING</span><i></i>
+          <span>OLT MANAGEMENT</span><i></i>
+          <span>ISP TAGGING</span><i></i>
+          <span>GPS GEO-TAG</span><i></i>
+          <span>EXCEL IMPORT</span><i></i>
+          <span>ROLE ACCESS</span><i></i>
+          <span>INACTIVE TRACKING</span><i></i>
+        </div>
+        <div class="marquee-content" aria-hidden="true">
+          <span>OLT MANAGEMENT</span><i></i>
+          <span>ISP TAGGING</span><i></i>
+          <span>GPS GEO-TAG</span><i></i>
+          <span>EXCEL IMPORT</span><i></i>
+          <span>ROLE ACCESS</span><i></i>
+          <span>INACTIVE TRACKING</span><i></i>
+          <span>OLT MANAGEMENT</span><i></i>
+          <span>ISP TAGGING</span><i></i>
+          <span>GPS GEO-TAG</span><i></i>
+          <span>EXCEL IMPORT</span><i></i>
+          <span>ROLE ACCESS</span><i></i>
+          <span>INACTIVE TRACKING</span><i></i>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -417,7 +450,7 @@
         <div class="pp">6 months</div>
         <div class="pv"><sup>₹</sup>599</div>
         <div class="pperiod">One-time · valid 6 months</div>
-        <div class="psave">₹100 / month effective</div>
+        <div class="psave green">₹100 / month effective</div>
         <div class="pf">
           <div class="pf-row"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Unlimited OLT management</div>
           <div class="pf-row"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Unlimited customer records</div>
@@ -465,10 +498,14 @@
   <!-- FOOTER -->
   <footer>
     <div class="f-in">
-      <div class="fl"><img class="logo-img sm" src="./icon.png" alt="Relynk logo" /> Relynk <span class="fsub2">· MSO CRM</span></div>
+      <a href="#" class="f-logo">
+        <img class="logo-img" src="./icon.png" alt="Relynk logo" />
+        <span class="logo-word">Relynk</span><span class="f-logo-sub">· MSO CRM</span>
+      </a>
       <div class="flinks">
         <a href="#features">Features</a>
         <a href="#pricing">Pricing</a>
+        <a href="https://crm.relynk.in" target="_blank">Web App</a>
         <a href="#" onclick="openContact('Support'); return false;">Support</a>
         <a href="https://relynk.in/privacy-policy" target="_blank">Privacy</a>
         <a href="https://relynk.in/term-of-service" target="_blank">Terms</a>
